@@ -42,31 +42,12 @@ document.addEventListener('DOMContentLoaded', () => {
   const bottomNav = document.getElementById('bottom-nav-bar');
   const navTabs = document.querySelectorAll('.nav-tab-item');
 
-  // Display Switcher & Viewport
-  const btnModePhone = document.getElementById('btn-mode-phone');
-  const btnModeDesktop = document.getElementById('btn-mode-desktop');
-  const viewportWrapper = document.getElementById('viewport-wrapper');
-  const livePhoneTime = document.getElementById('live-phone-time');
-
   // Modals
   const searchModal = document.getElementById('search-modal');
   const dsrModal = document.getElementById('calc-dsr-modal');
   const emergencyModal = document.getElementById('calc-emergency-modal');
   const quizModal = document.getElementById('quiz-modal');
   const readerModal = document.getElementById('module-reader-modal');
-
-  // =========================================================================
-  // LIVE CLOCK FOR PHONE STATUS BAR
-  // =========================================================================
-  function updateLiveClock() {
-    if (!livePhoneTime) return;
-    const now = new Date();
-    const hours = String(now.getHours()).padStart(2, '0');
-    const minutes = String(now.getMinutes()).padStart(2, '0');
-    livePhoneTime.textContent = `${hours}:${minutes}`;
-  }
-  updateLiveClock();
-  setInterval(updateLiveClock, 10000);
 
   // =========================================================================
   // SCREEN ROUTER
@@ -107,21 +88,6 @@ document.addEventListener('DOMContentLoaded', () => {
   // =========================================================================
   // DISPLAY VIEWPORT TOGGLE (PHONE / DESKTOP FULLSCREEN)
   // =========================================================================
-  if (btnModePhone && btnModeDesktop && viewportWrapper) {
-    btnModePhone.addEventListener('click', () => {
-      viewportWrapper.classList.remove('fullscreen-mode');
-      btnModePhone.classList.add('active');
-      btnModeDesktop.classList.remove('active');
-    });
-
-    btnModeDesktop.addEventListener('click', () => {
-      viewportWrapper.classList.add('fullscreen-mode');
-      btnModeDesktop.classList.add('active');
-      btnModePhone.classList.remove('active');
-    });
-  }
-
-  // =========================================================================
   // LOGIN SCREEN LOGIC (Matches FINformation - Login Page.png)
   // =========================================================================
   const loginForm = document.getElementById('login-form');
@@ -147,14 +113,14 @@ document.addEventListener('DOMContentLoaded', () => {
   if (btnLoginSubmit) btnLoginSubmit.addEventListener('click', handleLogin);
 
   if (linkLoginDaftar) {
-    linkLoginDaftar.addEventListener('click', () => {
-      switchScreen('home-screen');
+    linkLoginDaftar.addEventListener('click', (e) => {
+      handleLogin(e);
     });
   }
 
   if (linkLoginForgot) {
-    linkLoginForgot.addEventListener('click', () => {
-      alert('Silakan hubungi administrator EPSILON 2026 untuk reset kata sandi.');
+    linkLoginForgot.addEventListener('click', (e) => {
+      handleLogin(e);
     });
   }
 
