@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>FIN-formation - Dari Sekadar Akses, Menuju Cerdas Finansial</title>
+  <meta name="description" content="Platform Analisis Ekosistem Keuangan Spasial Indonesia & Edukasi Literasi Finansial Terpadu untuk NSIC EPSILON UNP 2026.">
+  
+  <!-- Google Fonts: Montserrat Only -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,600;1,700;1,800&display=swap" rel="stylesheet">
+  
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Floating Display Mode Switcher (Desktop Feature) -->
+  <aside class="view-switcher-bar" id="view-switcher" aria-label="Pengalih Mode Tampilan">
+    <button class="switcher-btn active" id="btn-mode-phone" title="Tampilan Simulator Ponsel">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect><line x1="12" y1="18" x2="12.01" y2="18"></line></svg>
+      Tampilan Ponsel
+    </button>
+    <button class="switcher-btn" id="btn-mode-desktop" title="Tampilan Layar Penuh">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+      Layar Penuh
+    </button>
+  </aside>
+
+  <div class="viewport-wrapper" id="viewport-wrapper">
+    <main class="app-container" id="app-container">
+
+      <!-- Smartphone Top Notch / Status Bar -->
+      <div class="phone-status-bar" id="phone-status-bar">
+        <span class="status-time" id="live-phone-time">09:41</span>
+        <div class="phone-dynamic-island" id="dynamic-island">
+          <span class="island-camera"></span>
+          <span class="island-sensor"></span>
+        </div>
+        <div class="status-icons">
+          <svg width="14" height="11" viewBox="0 0 24 24" fill="currentColor"><path d="M12 3c-4.97 0-9 4.03-9 9 0 2.12.74 4.07 1.97 5.61L12 22l7.03-4.39C20.26 16.07 21 14.12 21 12c0-4.97-4.03-9-9-9z" opacity="0.3"></path><path d="M12 3a9 9 0 0 0-9 9c0 2.12.74 4.07 1.97 5.61L12 22l7.03-4.39A8.96 8.96 0 0 0 21 12a9 9 0 0 0-9-9z"></path></svg>
+          <svg width="14" height="11" viewBox="0 0 24 24" fill="currentColor"><path d="M12 4C7.31 4 3.07 5.9 0 8.98L12 21 24 8.98C20.93 5.9 16.69 4 12 4z"></path></svg>
+          <div class="battery-icon"><div class="battery-level"></div></div>
+        </div>
+      </div>
+
+      <!-- ====================================================================
+           SCREEN 1: LOGIN PAGE (Matching FINformation - Login Page.png)
+           ==================================================================== -->
+      <section class="screen active" id="login-screen">
+        <div class="login-content-box">
+          <img src="FINformation/FINformation - Logo.png" alt="FIN-formation Logo" class="login-logo-img">
+          <h1 class="login-title">FIN-formation</h1>
+          <p class="login-subtitle">Dari Sekadar Akses, Menuju Cerdas Finansial</p>
+
+          <form class="login-form-group" id="login-form" onsubmit="return false;">
+            <input type="text" class="login-input" placeholder="Nama pengguna" id="input-login-username" value="Alvian Reno Andriantoro" autocomplete="username">
+            <input type="password" class="login-input" placeholder="Kata sandi" id="input-login-password" value="********" autocomplete="current-password">
+            <button type="submit" class="btn-login-submit" id="btn-login-submit">Masuk</button>
+          </form>
+
+          <div class="login-footer-links">
+            <button class="login-link-btn" id="link-login-daftar">Daftar</button>
+            <button class="login-link-btn" id="link-login-forgot">Lupa kata sandi?</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- ====================================================================
+           SCREEN 2: BERANDA / HOMEPAGE (Matching FINformation - Homepage.png)
+           ==================================================================== -->
+      <section class="screen" id="home-screen">
+        <!-- Top Navy App Bar -->
+        <header class="app-header-navy">
+          <h1 class="header-center-title">FIN-formation</h1>
+        </header>
+
+        <div class="home-scroll-container">
+          <!-- Main Headline -->
+          <h2 class="home-section-title">Kondisi ekosistem keuangan Indonesia saat ini...</h2>
+
+          <!-- Spatial Map Image -->
+          <div class="home-map-container">
+            <img src="peta klaster bayangan.png" alt="Peta Ekosistem Keuangan Indonesia" class="home-map-image">
+          </div>
+
+          <!-- Map Legend -->
+          <div class="map-legend-row">
+            <div class="legend-item"><span class="legend-dot dot-bagus"></span>Bagus</div>
+            <div class="legend-item"><span class="legend-dot dot-moderat"></span>Moderat</div>
+            <div class="legend-item"><span class="legend-dot dot-kredit-macet"></span>Kredit Macet</div>
+            <div class="legend-item"><span class="legend-dot dot-tertinggal"></span>Tertinggal</div>
+          </div>
+
+          <!-- 2 National Indices Cards (Side by Side) -->
+          <div class="home-indices-grid">
+            <div class="home-index-card">
+              <div class="home-index-label">Indeks Inklusi<br>Keuangan Nasional</div>
+              <div class="home-index-val">93.61%</div>
+            </div>
+            <div class="home-index-card">
+              <div class="home-index-label">Indeks Literasi<br>Keuangan Nasional</div>
+              <div class="home-index-val">69.57%</div>
+            </div>
+          </div>
+
+          <!-- Highlight Callout Text -->
+          <p class="home-callout-text">
+            Meskipun secara relatif terlihat tinggi, tetapi terdapat <span class="tag-maroon">ketimpangan</span> yang <span class="tag-maroon">cukup besar</span> diantara keduanya.
+          </p>
+
+          <!-- Second Section Title -->
+          <h3 class="home-sub-title">Setiap provinsi memiliki tantangan berbeda</h3>
+
+          <!-- Kenali Daerahmu Banner Card -->
+          <div class="home-kenali-banner" id="banner-kenali-daerah" style="background-image: url('Kenali Daerahmu.webp');">
+            <button class="btn-kenali-daerah-pill" id="btn-kenali-daerah">Kenali Daerahmu</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- ====================================================================
+           SCREEN 3: DETAIL PROVINSI (Matching FINformation - Detail Page.png)
+           ==================================================================== -->
+      <section class="screen" id="province-screen">
+        <!-- Top Navy App Bar with Back Chevron -->
+        <header class="app-header-navy">
+          <button class="header-back-btn" id="btn-back-to-home" aria-label="Kembali ke Beranda">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#ffec85" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="15 18 9 12 15 6"></polyline>
+            </svg>
+          </button>
+          <h1 class="header-center-title">FIN-formation</h1>
+        </header>
+
+        <div class="detail-scroll-container">
+          <!-- Province Hero Banner Card -->
+          <div class="detail-hero-card" id="detail-hero-card" style="background-image: url('Gambar Provinsi/DKI Jakarta.webp');">
+            <div class="detail-hero-top">
+              <button class="btn-ganti-daerah-dropdown" id="btn-ganti-daerah">
+                Ganti Daerah <span class="dropdown-arrow">&#9662;</span>
+              </button>
+            </div>
+            <div class="detail-hero-name" id="detail-prov-name">DKI Jakarta</div>
+          </div>
+
+          <!-- Cluster Status Banner Pill -->
+          <div class="detail-cluster-pill badge-c1" id="detail-cluster-pill">Cluster 1</div>
+
+          <!-- Cluster Description Paragraph -->
+          <p class="detail-cluster-desc" id="detail-cluster-desc">
+            <strong id="detail-desc-bold">Provinsi DKI Jakarta</strong> dikelompokkan ke dalam klaster pertama, yaitu daerah dimana tingkat literasi tinggi belum mampu meredam risiko kredit bermasalah yang tinggi.
+          </p>
+
+          <!-- 6 Metric Cards (3 Columns x 2 Rows) -->
+          <div class="detail-metrics-grid">
+            <!-- Metric 1: Pinjaman -->
+            <div class="detail-metric-card">
+              <div class="metric-title"><em>Pinjaman</em></div>
+              <div class="metric-number" id="detail-val-pinjaman">264.32</div>
+              <div class="metric-caption" id="detail-cap-pinjaman">Aktivitas peminjam aktif tergolong masif</div>
+            </div>
+
+            <!-- Metric 2: Merchant -->
+            <div class="detail-metric-card">
+              <div class="metric-title"><em>Merchant</em></div>
+              <div class="metric-number" id="detail-val-merchant">527.81</div>
+              <div class="metric-caption" id="detail-cap-merchant">Ekosistem usaha digital tergolong prima</div>
+            </div>
+
+            <!-- Metric 3: TWP90 -->
+            <div class="detail-metric-card">
+              <div class="metric-title"><em>TWP90</em></div>
+              <div class="metric-number" id="detail-val-twp90">11.58%</div>
+              <div class="metric-caption" id="detail-cap-twp90">Tingkat Kredit Macet tergolong kritis (>5%)</div>
+            </div>
+
+            <!-- Metric 4: Literasi -->
+            <div class="detail-metric-card">
+              <div class="metric-title"><em>Literasi</em></div>
+              <div class="metric-number" id="detail-val-literasi">84.01%</div>
+              <div class="metric-caption" id="detail-cap-literasi">Masyarakatnya sudah cakap keuangan</div>
+            </div>
+
+            <!-- Metric 5: Inklusi -->
+            <div class="detail-metric-card">
+              <div class="metric-title"><em>Inklusi</em></div>
+              <div class="metric-number" id="detail-val-inklusi">99.74%</div>
+              <div class="metric-caption" id="detail-cap-inklusi">Masyarakatnya sudah terinklusi secara keuangan</div>
+            </div>
+
+            <!-- Metric 6: Skor IMDI -->
+            <div class="detail-metric-card">
+              <div class="metric-title"><em>Skor IMDI</em></div>
+              <div class="metric-number" id="detail-val-imdi">53.73</div>
+              <div class="metric-caption" id="detail-cap-imdi">Masyarakatnya sudah cakap digital</div>
+            </div>
+          </div>
+
+          <!-- Insight Box -->
+          <div class="detail-insight-box">
+            <h4 class="insight-box-title">Insight Box</h4>
+            <p class="insight-box-text" id="detail-insight-text">
+              <strong>Provinsi DKI Jakarta</strong> mencatat ekosistem digital paling matang dengan Inklusi 99,74% dan Literasi 84,01%. Namun, wilayah ini menjadi outlier berisiko tinggi karena rasio kredit macet (TWP90) menembus 11,58% (jauh di atas ambang batas aman 5%).
+            </p>
+          </div>
+
+          <!-- Two Split Comparison Cards: Kok bisa? & Harus apa? -->
+          <div class="detail-split-grid">
+            <div class="split-card-red">
+              <h5>Kok bisa?</h5>
+              <p id="detail-kok-bisa">Kemudahan akses pinjaman digital berpadu dengan tingginya tekanan belanja gaya hidup perkotaan, memicu akumulasi utang konsumtif.</p>
+            </div>
+            <div class="split-card-green">
+              <h5>Harus apa?</h5>
+              <p id="detail-harus-apa">Batasi total cicilan maksimal 30% dari penghasilan bulanan dan hindari skema gali lubang tutup lubang.</p>
+            </div>
+          </div>
+
+          <!-- Bottom Action Banner (Perdalam Pengetahuanmu Tentang Keuangan) -->
+          <div class="detail-knowledge-banner">
+            <div class="knowledge-banner-title">
+              Perdalam Pengetahuanmu<br>Tentang Keuangan
+            </div>
+            <button class="btn-yellow-book" id="btn-to-modules-from-detail" aria-label="Buka Modul Keuangan">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#0d1e44" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+                <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- ====================================================================
+           SCREEN 4: MODUL CERDAS FINANSIAL
+           ==================================================================== -->
+      <section class="screen" id="modules-screen">
+        <header class="app-header-navy">
+          <h1 class="header-center-title">FIN-formation</h1>
+        </header>
+
+        <div class="modules-scroll-container">
+          <h3 class="section-clean-title">Perangkat Interaktif Finansial</h3>
+
+          <!-- 3 Interactive Tools -->
+          <div class="tools-action-grid">
+            <div class="tool-action-card" id="btn-open-dsr-calc">
+              <div class="tool-card-icon-wrap">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="2" width="16" height="20" rx="2"></rect><line x1="8" y1="6" x2="16" y2="6"></line><line x1="16" y1="14" x2="16" y2="18"></line><line x1="8" y1="10" x2="8.01" y2="10"></line><line x1="12" y1="10" x2="12.01" y2="10"></line><line x1="16" y1="10" x2="16.01" y2="10"></line><line x1="8" y1="14" x2="8.01" y2="14"></line><line x1="12" y1="14" x2="12.01" y2="14"></line><line x1="8" y1="18" x2="8.01" y2="18"></line><line x1="12" y1="18" x2="12.01" y2="18"></line></svg>
+              </div>
+              <div class="tool-card-title">Kalkulator Cicilan 30%</div>
+              <div class="tool-card-sub">Evaluasi rasio utang aman (&le; 30%)</div>
+            </div>
+
+            <div class="tool-action-card" id="btn-open-emergency-calc">
+              <div class="tool-card-icon-wrap">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+              </div>
+              <div class="tool-card-title">Kalkulator Dana Darurat</div>
+              <div class="tool-card-sub">Hitung cadangan kas sesuai kebutuhan</div>
+            </div>
+
+            <div class="tool-action-card full-col" id="btn-open-quiz">
+              <div style="display: flex; align-items: center; gap: 12px;">
+                <div class="tool-card-icon-wrap" style="background: rgba(13, 30, 68, 0.12); margin-bottom: 0;">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="7"></circle><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline></svg>
+                </div>
+                <div>
+                  <div class="tool-card-title">Kuis Cerdas Finansial</div>
+                  <div class="tool-card-sub">Uji pemahaman literasi & evaluasi wawasan finansial</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <h3 class="section-clean-title">5 Modul Pembelajaran Terstruktur</h3>
+          <div class="modules-curriculum-list" id="curriculum-module-list">
+            <!-- Dynamically populated by app.js -->
+          </div>
+
+          <h3 class="section-clean-title">Mitos vs Fakta Keuangan</h3>
+          <div class="myths-cards-scroll" id="myths-cards-container">
+            <!-- Dynamically populated by app.js -->
+          </div>
+        </div>
+      </section>
+
+      <!-- ====================================================================
+           SCREEN 5: PROFIL PENGGUNA (Akun Pribadi)
+           ==================================================================== -->
+      <section class="screen" id="profile-screen">
+        <header class="app-header-navy">
+          <h1 class="header-center-title">FIN-formation</h1>
+        </header>
+
+        <div class="profile-scroll-container">
+          <!-- User Identity Card -->
+          <div class="profile-user-hero-card">
+            <div class="profile-avatar-wrap">
+              <div class="profile-avatar-circle">
+                <span class="profile-avatar-initials">AR</span>
+              </div>
+            </div>
+            <div class="profile-user-info">
+              <h3 class="profile-user-name" id="profile-user-name">Alvian Reno Andriantoro</h3>
+              <div class="profile-role-pill">Pengguna Terverifikasi</div>
+              <div class="profile-location-row">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#be3618" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                  <circle cx="12" cy="10" r="3"></circle>
+                </svg>
+                <span>Daerah Asal: <strong>DI Yogyakarta</strong></span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Quick Link to User's Home Province -->
+          <div class="profile-province-card" id="profile-btn-view-diy" role="button" tabindex="0" title="Buka Profil Keuangan DI Yogyakarta">
+            <div class="profile-province-text">
+              <div class="profile-province-label">Profil Keuangan Daerahmu</div>
+              <div class="profile-province-title">DI Yogyakarta &bull; Cluster 2</div>
+              <div class="profile-province-desc">Inklusi 98,74% &bull; Literasi 76,44% &bull; TWP90 2,85% (Sehat)</div>
+            </div>
+            <button class="profile-btn-open-diy" aria-label="Buka Data Keuangan DI Yogyakarta">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="9 18 15 12 9 6"></polyline>
+              </svg>
+            </button>
+          </div>
+
+          <!-- Financial Health & Knowledge Summary -->
+          <div class="profile-summary-grid">
+            <div class="profile-summary-card">
+              <div class="profile-summary-label">Status Literasi</div>
+              <div class="profile-summary-val">Cakap Keuangan</div>
+              <div class="profile-summary-sub">Tingkat Literasi Tinggi</div>
+            </div>
+            <div class="profile-summary-card">
+              <div class="profile-summary-label">Rasio Cicilan (DSR)</div>
+              <div class="profile-summary-val status-healthy">&lt; 30% Terkendali</div>
+              <div class="profile-summary-sub">Batas Utang Sangat Sehat</div>
+            </div>
+          </div>
+
+          <!-- Account Information Card -->
+          <div class="profile-section-card">
+            <h4 class="profile-card-title">Informasi Akun</h4>
+            <div class="profile-info-list">
+              <div class="profile-info-row">
+                <span class="info-label">Nama Lengkap</span>
+                <span class="info-val" id="profile-display-fullname">Alvian Reno Andriantoro</span>
+              </div>
+              <div class="profile-info-row">
+                <span class="info-label">Daerah Domisili</span>
+                <span class="info-val">DI Yogyakarta</span>
+              </div>
+              <div class="profile-info-row">
+                <span class="info-label">Status Akun</span>
+                <span class="info-val status-active">Aktif &bull; Terverifikasi</span>
+              </div>
+              <div class="profile-info-row">
+                <span class="info-label">Koleksi Modul</span>
+                <span class="info-val">5 Modul Tersedia</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Action Button: Keluar / Halaman Masuk -->
+          <button class="btn-profile-logout" id="btn-profile-logout" aria-label="Keluar ke Halaman Masuk">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+              <polyline points="16 17 21 12 16 7"></polyline>
+              <line x1="21" y1="12" x2="9" y2="12"></line>
+            </svg>
+            <span>Keluar / Halaman Masuk</span>
+          </button>
+
+          <!-- Clean Footer Credit -->
+          <div class="profile-footer-stamp">
+            <strong>FIN-formation</strong> &bull; NSIC EPSILON UNP 2026<br>
+            Himpunan Mahasiswa Statistika Universitas Negeri Padang
+          </div>
+        </div>
+      </section>
+
+      <!-- ====================================================================
+           BOTTOM NAVIGATION BAR (Matching FINformation - Homepage.png)
+           ==================================================================== -->
+      <nav class="bottom-nav-bar" id="bottom-nav-bar" style="display: none;" aria-label="Navigasi Utama">
+        <button class="nav-tab-item active" data-target="home-screen" id="nav-btn-home">
+          <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+          <span>Beranda</span>
+        </button>
+        <button class="nav-tab-item" data-target="modules-screen" id="nav-btn-modules">
+          <svg viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+          <span>Modul</span>
+        </button>
+        <button class="nav-tab-item" data-target="profile-screen" id="nav-btn-profile">
+          <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+          <span>Profil</span>
+        </button>
+      </nav>
+
+  <!-- ====================================================================
+       MODAL 1: GANTI DAERAH (PILIH 38 PROVINSI)
+       ==================================================================== -->
+  <div class="modal-overlay" id="search-modal" role="dialog" aria-modal="true">
+    <div class="modal-dialog-clean">
+      <div class="modal-header-clean">
+        <h3>Pilih Provinsi</h3>
+        <button class="modal-close-icon-btn" id="btn-close-search-modal" aria-label="Tutup">&times;</button>
+      </div>
+      <div class="modal-body-clean">
+        <div class="search-box-wrap">
+          <input type="text" id="input-province-search" class="search-input-field" placeholder="Cari nama provinsi (DKI Jakarta, Bali, dsb)..." autocomplete="off">
+        </div>
+
+        <div class="search-filter-pills">
+          <button class="filter-pill active" data-filter="all">Semua (38)</button>
+          <button class="filter-pill" data-filter="0">Cluster 1 (1)</button>
+          <button class="filter-pill" data-filter="3">Cluster 2 (6)</button>
+          <button class="filter-pill" data-filter="2">Cluster 3 (20)</button>
+          <button class="filter-pill" data-filter="1">Cluster 4 (11)</button>
+        </div>
+
+        <div class="province-items-grid" id="province-list-items">
+          <!-- Dynamically populated by app.js with authentic local photos -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ====================================================================
+       MODAL 2: KALKULATOR DSR (RASIO UTANG 30%)
+       ==================================================================== -->
+  <div class="modal-overlay" id="calc-dsr-modal" role="dialog" aria-modal="true">
+    <div class="modal-dialog-clean">
+      <div class="modal-header-clean">
+        <h3>Kalkulator Rasio Utang (DSR)</h3>
+        <button class="modal-close-icon-btn" id="btn-close-dsr-modal" aria-label="Tutup">&times;</button>
+      </div>
+      <div class="modal-body-clean">
+        <p style="font-size: 12px; color: var(--color-text-secondary); margin-bottom: 14px;">Pastikan total cicilan utang bulanan Anda tidak melebihi batas aman 30% dari penghasilan.</p>
+
+        <div class="calc-field-group">
+          <div class="calc-field-header">
+            <span>Penghasilan Bersih Bulanan:</span>
+            <span class="calc-field-display" id="disp-dsr-income">Rp 7.000.000</span>
+          </div>
+          <input type="range" id="dsr-income-slider" min="1000000" max="30000000" step="500000" value="7000000" class="clean-slider">
+        </div>
+
+        <div class="calc-field-group">
+          <div class="calc-field-header">
+            <span>Total Cicilan Bulanan (Pinjol, PayLater, KPR):</span>
+            <span class="calc-field-display" id="disp-dsr-debt">Rp 1.800.000</span>
+          </div>
+          <input type="range" id="dsr-debt-slider" min="0" max="15000000" step="200000" value="1800000" class="clean-slider">
+        </div>
+
+        <div class="calc-result-clean" id="dsr-result-box">
+          <div style="font-size: 11.5px; font-weight: 700; color: #64748b;">Rasio Debt-to-Income Anda:</div>
+          <div class="calc-result-big" id="dsr-result-val">25.71%</div>
+          <span class="calc-status-badge status-safe" id="dsr-result-status">STATUS: SEHAT & AMAN (&le; 30%)</span>
+          <p style="font-size: 11.5px; color: #475569; margin-top: 8px;" id="dsr-result-advice">Bagus! Cicilan Anda masih terkendali. Pertahankan dan alokasikan sisa dana untuk tabungan dana darurat.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ====================================================================
+       MODAL 3: KALKULATOR DANA DARURAT
+       ==================================================================== -->
+  <div class="modal-overlay" id="calc-emergency-modal" role="dialog" aria-modal="true">
+    <div class="modal-dialog-clean">
+      <div class="modal-header-clean">
+        <h3>Kalkulator Dana Darurat</h3>
+        <button class="modal-close-icon-btn" id="btn-close-emergency-modal" aria-label="Tutup">&times;</button>
+      </div>
+      <div class="modal-body-clean">
+        <p style="font-size: 12px; color: var(--color-text-secondary); margin-bottom: 14px;">Hitung cadangan dana tunai yang wajib disiapkan sebelum mengajukan pinjaman.</p>
+
+        <div class="calc-field-group">
+          <div class="calc-field-header">
+            <span>Pengeluaran Rutin Bulanan:</span>
+            <span class="calc-field-display" id="disp-emg-expense">Rp 4.000.000</span>
+          </div>
+          <input type="range" id="emg-expense-slider" min="1000000" max="20000000" step="500000" value="4000000" class="clean-slider">
+        </div>
+
+        <div class="calc-field-group">
+          <label style="font-size: 12px; font-weight: 700; color: var(--color-navy-text); display: block; margin-bottom: 6px;">Status Tanggungan Keluarga</label>
+          <select id="emg-status" style="width: 100%; height: 42px; padding: 0 12px; border-radius: 10px; border: 1.5px solid var(--color-navy-border); font-family: inherit; font-size: 13px; font-weight: 600;">
+            <option value="3">Lajang / Belum Menikah (3x Pengeluaran)</option>
+            <option value="6" selected>Menikah tanpa tanggungan (6x Pengeluaran)</option>
+            <option value="9">Menikah dengan anak (9x Pengeluaran)</option>
+            <option value="12">Pekerja Lepas / Freelancer (12x Pengeluaran)</option>
+          </select>
+        </div>
+
+        <div class="calc-result-clean" id="emg-result-box">
+          <div style="font-size: 11.5px; font-weight: 700; color: #64748b;">Target Dana Darurat Ideal:</div>
+          <div class="calc-result-big" id="emg-result-val">Rp 24.000.000</div>
+          <p style="font-size: 11.5px; color: #475569; margin-top: 6px;">Simpan dana ini di instrumen likuid (tabungan & reksadana pasar uang) yang dapat ditarik saat darurat.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ====================================================================
+       MODAL 4: KUIS CERDAS FINANSIAL
+       ==================================================================== -->
+  <div class="modal-overlay" id="quiz-modal" role="dialog" aria-modal="true">
+    <div class="modal-dialog-clean">
+      <div class="modal-header-clean">
+        <h3>Kuis Cerdas Finansial</h3>
+        <button class="modal-close-icon-btn" id="btn-close-quiz-modal" aria-label="Tutup">&times;</button>
+      </div>
+      <div class="modal-body-clean" id="quiz-body">
+        <div id="quiz-question-container">
+          <div style="display: flex; justify-content: space-between; font-size: 11.5px; color: #64748b; font-weight: 700; margin-bottom: 8px;">
+            <span id="quiz-progress-text">Pertanyaan 1 dari 5</span>
+            <span id="quiz-score-badge">Skor: 0</span>
+          </div>
+          <div style="font-size: 14px; font-weight: 800; color: var(--color-navy-text); line-height: 1.4; margin-bottom: 14px;" id="quiz-question-text">
+            Pertanyaan kuis akan dimuat di sini...
+          </div>
+          <div id="quiz-options-list" style="display: flex; flex-direction: column; gap: 8px;">
+            <!-- Options rendered by app.js -->
+          </div>
+          <div id="quiz-explanation-box" style="display: none; margin-top: 12px; padding: 12px; background: #f0f9ff; border: 1px solid #bae6fd; border-radius: 10px; font-size: 12px; color: #0369a1; line-height: 1.4;"></div>
+        </div>
+
+        <div id="quiz-result-container" style="display: none; text-align: center; padding: 10px 4px;">
+          <div class="quiz-result-badge-wrap" style="margin-bottom: 8px;">
+            <span id="quiz-result-grade-tag" style="display: inline-block; font-size: 11px; font-weight: 800; padding: 4px 14px; border-radius: 9999px; text-transform: uppercase; background: #fef3c7; color: #92400e; border: 1px solid #d97706;">EXCELLENT</span>
+          </div>
+          <h4 style="font-size: 18px; font-weight: 800; color: var(--color-navy-text);">Hasil Evaluasi Kuis</h4>
+          <div style="font-size: 38px; font-weight: 900; color: #16215b; margin: 8px 0; letter-spacing: -0.5px;" id="quiz-final-score">100 / 100</div>
+
+          <div style="background: #ffffff; border: 1.5px solid var(--color-navy-border); border-radius: 14px; padding: 14px; text-align: left; margin: 14px 0;">
+            <div style="display: flex; justify-content: space-between; font-size: 12px; margin-bottom: 6px;">
+              <span style="color: #64748b;">Jawaban Benar:</span>
+              <strong style="color: #16a34a;" id="quiz-correct-count">5 dari 5 Soal</strong>
+            </div>
+            <div style="display: flex; justify-content: space-between; font-size: 12px; margin-bottom: 8px;">
+              <span style="color: #64748b;">Tingkat Pemahaman:</span>
+              <strong style="color: #0d1e44;" id="quiz-level-text">Sangat Tinggi</strong>
+            </div>
+            <p style="font-size: 12px; color: #334155; line-height: 1.45; border-top: 1px dashed #cbd5e1; padding-top: 8px; margin-top: 4px;" id="quiz-final-feedback">
+              Luar biasa! Anda menguasai manajemen rasio utang 30%, mitigasi pinjol ilegal, formula 50/30/20, dan indikator kredit macet TWP90 dengan sangat baik.
+            </p>
+          </div>
+
+          <div style="display: flex; gap: 10px; margin-top: 14px;">
+            <button class="btn-kenali-daerah-pill" id="btn-retry-quiz" style="flex: 1; height: 44px; font-size: 13px;">Ulangi Kuis</button>
+            <button id="btn-finish-quiz" style="flex: 1; height: 44px; border-radius: 9999px; background: #ffffff; border: 1.5px solid var(--color-navy-border); color: #0d1e44; font-size: 13px; font-weight: 700; cursor: pointer;">Tutup</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ====================================================================
+       MODAL 6: DETAIL MODUL (READER)
+       ==================================================================== -->
+  <div class="modal-overlay" id="module-reader-modal" role="dialog" aria-modal="true">
+    <div class="modal-dialog-clean">
+      <div class="modal-header-clean">
+        <h3 id="reader-module-title">Materi Modul</h3>
+        <button class="modal-close-icon-btn" id="btn-close-reader-modal" aria-label="Tutup">&times;</button>
+      </div>
+      <div class="modal-body-clean" id="reader-module-body" style="line-height: 1.55; color: #334155; font-size: 12.5px;">
+        <!-- Populated by app.js -->
+      </div>
+    </div>
+  </div>
+
+    </main>
+  </div>
+
+  <!-- Scripts -->
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
