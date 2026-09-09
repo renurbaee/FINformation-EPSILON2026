@@ -141,6 +141,7 @@ document.addEventListener('DOMContentLoaded', () => {
     renderProvinceDetail();
     switchScreen('province-screen');
   }
+  window.openProvinceDetail = openProvinceDetail;
 
   if (btnKenaliDaerah) {
     btnKenaliDaerah.addEventListener('click', (e) => {
@@ -229,39 +230,82 @@ document.addEventListener('DOMContentLoaded', () => {
       else clusterPill.classList.add('badge-c4');
     }
 
-    // Cluster Description Paragraph
-    if (clusterDesc) {
-      clusterDesc.innerHTML = `<strong>Provinsi ${p.nama}</strong> ${p.clusterDesc.replace(/^Provinsi\s+[A-Za-z\s]+/, '')}`;
+    // Standardized Cluster Explanations
+    const clusterStandardDescs = {
+      0: 'dikelompokkan ke dalam <strong>Klaster 1</strong>, yaitu wilayah dengan aktivitas transaksi keuangan digital dan tingkat literasi tinggi, namun memiliki risiko kredit bermasalah (TWP90) yang tinggi di atas ambang batas aman.',
+      3: 'dikelompokkan ke dalam <strong>Klaster 2</strong>, yaitu wilayah dengan aktivitas transaksi keuangan digital dan tingkat literasi tinggi, serta rasio kredit bermasalah yang terkendali aman.',
+      2: 'dikelompokkan ke dalam <strong>Klaster 3</strong>, yaitu wilayah dengan aktivitas transaksi keuangan digital dan tingkat literasi kategori sedang, serta rasio kredit bermasalah yang tergolong aman.',
+      1: 'dikelompokkan ke dalam <strong>Klaster 4</strong>, yaitu wilayah dengan penetrasi layanan keuangan digital dan tingkat literasi yang masih dalam tahap berkembang.'
+    };
+
+    // Helper for interpreting metric values meaningfully (matching FINformation - Detail Page.png)
+    function getMetricCaption(type, value) {
+      if (type === 'pinjaman') {
+        if (value >= 150) return 'Aktivitas peminjam aktif tergolong masif';
+        if (value >= 80) return 'Aktivitas peminjam aktif tergolong tinggi';
+        if (value >= 40) return 'Aktivitas peminjam aktif tergolong moderat';
+        return 'Aktivitas peminjam aktif masih terbatas';
+      }
+      if (type === 'merchant') {
+        if (value >= 200) return 'Ekosistem usaha digital tergolong prima';
+        if (value >= 100) return 'Ekosistem usaha digital cukup berkembang';
+        return 'Ekosistem usaha digital masih bertumbuh';
+      }
+      if (type === 'twp90') {
+        if (value > 5.0) return 'Tingkat Kredit Macet tergolong kritis (>5%)';
+        if (value >= 3.0) return 'Tingkat Kredit Macet tergolong waspada (3-5%)';
+        return 'Tingkat Kredit Macet terkendali aman (<5%)';
+      }
+      if (type === 'literasi') {
+        if (value >= 70.0) return 'Masyarakatnya sudah cakap keuangan';
+        if (value >= 55.0) return 'Pemahaman produk keuangan tergolong moderat';
+        return 'Pemahaman produk keuangan masih berkembang';
+      }
+      if (type === 'inklusi') {
+        if (value >= 90.0) return 'Masyarakatnya sudah terinklusi secara keuangan';
+        if (value >= 80.0) return 'Akses produk keuangan cukup luas';
+        return 'Akses produk keuangan masih terbatas';
+      }
+      if (type === 'imdi') {
+        if (value >= 50.0) return 'Masyarakatnya sudah cakap digital';
+        if (value >= 42.0) return 'Keterampilan digital tergolong memadai';
+        return 'Keterampilan digital masih perlu ditingkatkan';
+      }
+      return '';
     }
 
-    // 6 Metric Indicators (Formatted clean with dot decimals as in mockups)
+    // Cluster Description Paragraph (Uniform & Objective)
+    if (clusterDesc) {
+      const standardDesc = clusterStandardDescs[p.cluster] || clusterStandardDescs[2];
+      clusterDesc.innerHTML = `<strong>Provinsi ${p.nama}</strong> ${standardDesc}`;
+    }
+
+    // 6 Metric Indicators (Formatted clean with uniform threshold explanations)
     if (valPinjaman) valPinjaman.textContent = p.rekeningPer1000.toFixed(2);
-    if (capPinjaman) capPinjaman.textContent = p.rekeningKet || 'Aktivitas peminjam terdata';
+    if (capPinjaman) capPinjaman.textContent = getMetricCaption('pinjaman', p.rekeningPer1000);
 
     if (valMerchant) valMerchant.textContent = p.merchantPer1000.toFixed(2);
-    if (capMerchant) capMerchant.textContent = p.merchantKet || 'Ekosistem usaha digital terdata';
+    if (capMerchant) capMerchant.textContent = getMetricCaption('merchant', p.merchantPer1000);
 
     if (valTwp90) valTwp90.textContent = `${p.twp90.toFixed(2)}%`;
-    if (capTwp90) {
-      if (p.twp90 > 5.0) {
-        capTwp90.textContent = 'Tingkat Kredit Macet tergolong kritis (>5%)';
-      } else {
-        capTwp90.textContent = 'Tingkat Kredit Macet terkendali aman (<5%)';
-      }
-    }
+    if (capTwp90) capTwp90.textContent = getMetricCaption('twp90', p.twp90);
 
     if (valLiterasi) valLiterasi.textContent = `${p.literasi.toFixed(2)}%`;
-    if (capLiterasi) capLiterasi.textContent = p.literasiKet || 'Masyarakatnya sudah cakap keuangan';
+    if (capLiterasi) capLiterasi.textContent = getMetricCaption('literasi', p.literasi);
 
     if (valInklusi) valInklusi.textContent = `${p.inklusi.toFixed(2)}%`;
-    if (capInklusi) capInklusi.textContent = p.inklusiKet || 'Masyarakatnya sudah terinklusi secara keuangan';
+    if (capInklusi) capInklusi.textContent = getMetricCaption('inklusi', p.inklusi);
 
     if (valImdi) valImdi.textContent = p.skorImdi.toFixed(2);
-    if (capImdi) capImdi.textContent = p.imdiKet || 'Masyarakatnya sudah cakap digital';
+    if (capImdi) capImdi.textContent = getMetricCaption('imdi', p.skorImdi);
 
-    // Insight Box
+    // Insight Box (Objective Statistical Summary)
     if (insightText) {
-      insightText.innerHTML = `<strong>Provinsi ${p.nama}</strong> ${p.insightBox.replace(/^Provinsi\s+[A-Za-z\s]+/, '')}`;
+      const riskStatus = p.twp90 > 5.0
+        ? 'Rasio kredit macet (TWP90) berada di atas ambang batas aman 5%, sehingga memerlukan pengawasan risiko kredit yang lebih ketat.'
+        : 'Rasio kredit macet (TWP90) berada dalam kategori terkendali di bawah ambang batas waspada 5%.';
+
+      insightText.innerHTML = `<strong>Provinsi ${p.nama}</strong> memiliki tingkat inklusi keuangan sebesar <strong>${p.inklusi.toFixed(2)}%</strong> dan tingkat literasi keuangan sebesar <strong>${p.literasi.toFixed(2)}%</strong>. Densitas merchant QRIS tercatat sebesar <strong>${p.merchantPer1000.toFixed(2)}</strong> per 1.000 penduduk dengan rasio pinjaman aktif sebesar <strong>${p.rekeningPer1000.toFixed(2)}</strong> per 1.000 penduduk. ${riskStatus}`;
     }
 
     // Two Comparison Cards
