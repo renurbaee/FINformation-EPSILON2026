@@ -339,6 +339,24 @@ document.addEventListener('DOMContentLoaded', () => {
   const filterPills = document.querySelectorAll('.filter-pill');
   const provinceListContainer = document.getElementById('province-list-items');
 
+  function updateFilterPillCounts() {
+    const counts = { all: PROVINCES_DATA.length, 0: 0, 3: 0, 2: 0, 1: 0 };
+    PROVINCES_DATA.forEach(p => {
+      if (counts[p.cluster] !== undefined) {
+        counts[p.cluster]++;
+      }
+    });
+
+    filterPills.forEach(pill => {
+      const f = pill.getAttribute('data-filter');
+      if (f === 'all') pill.textContent = `Semua (${counts.all})`;
+      else if (f === '0') pill.textContent = `Cluster 1 (${counts[0]})`;
+      else if (f === '3') pill.textContent = `Cluster 2 (${counts[3]})`;
+      else if (f === '2') pill.textContent = `Cluster 3 (${counts[2]})`;
+      else if (f === '1') pill.textContent = `Cluster 4 (${counts[1]})`;
+    });
+  }
+
   function openSearchModal() {
     if (searchModal) {
       searchModal.classList.add('active');
@@ -348,6 +366,7 @@ document.addEventListener('DOMContentLoaded', () => {
       }
       state.searchFilter = 'all';
       state.searchQuery = '';
+      updateFilterPillCounts();
       filterPills.forEach(pill => {
         if (pill.getAttribute('data-filter') === 'all') pill.classList.add('active');
         else pill.classList.remove('active');
