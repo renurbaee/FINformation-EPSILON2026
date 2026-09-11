@@ -41,20 +41,20 @@ const CLUSTERS_CONFIG = {
     name: "Cluster 1",
     badgeLabel: "Cluster 1",
     badgeClass: "badge-c1",
-    color: "#be3618",
-    title: "Aktivitas Digital Tinggi, Risiko Kredit Tinggi",
-    shortDesc: "Wilayah dengan aktivitas keuangan digital dan tingkat literasi tinggi, namun memiliki rasio kredit bermasalah (TWP90) yang tinggi di atas ambang batas aman.",
-    characteristics: "Memiliki penetrasi peminjam dan merchant digital yang tinggi, namun diiringi rasio kredit macet yang melewati ambang batas aman 5%."
+    color: "#df3522",
+    title: "Risiko Kredit Macet Tinggi (Outlier)",
+    shortDesc: "dikelompokkan ke dalam <strong>Klaster 1</strong>, yaitu wilayah dengan aktivitas transaksi keuangan digital dan tingkat literasi tinggi, namun memiliki risiko kredit bermasalah (TWP90) yang tinggi di atas ambang batas aman.",
+    characteristics: "Memiliki penetrasi peminjam dan merchant digital yang tinggi, namun diiringi rasio kredit macet (TWP90) yang melewati ambang batas aman 5%."
   },
-  3: {
-    id: 3,
+  1: {
+    id: 1,
     name: "Cluster 2",
     badgeLabel: "Cluster 2",
     badgeClass: "badge-c2",
-    color: "#2563eb",
-    title: "Aktivitas Digital Tinggi & Terkendali",
-    shortDesc: "Wilayah dengan aktivitas transaksi keuangan digital dan tingkat literasi tinggi, serta rasio kredit bermasalah yang terkendali aman.",
-    characteristics: "Tingkat inklusi, literasi, dan transaksi digital berada pada kategori tinggi dengan rasio kredit macet (TWP90) yang tetap berada di bawah ambang batas aman."
+    color: "#7b8fa1",
+    title: "Wilayah Tertinggal & Akses Terbatas",
+    shortDesc: "dikelompokkan ke dalam <strong>Klaster 2</strong>, yaitu wilayah dengan penetrasi layanan keuangan digital dan tingkat literasi yang masih dalam tahap berkembang.",
+    characteristics: "Penetrasi akses keuangan formal dan kanal digital masih terbatas, dengan tantangan pada pemerataan infrastruktur dan edukasi finansial dasar."
   },
   2: {
     id: 2,
@@ -62,19 +62,19 @@ const CLUSTERS_CONFIG = {
     badgeLabel: "Cluster 3",
     badgeClass: "badge-c3",
     color: "#f09228",
-    title: "Aktivitas Digital Sedang & Terkendali",
-    shortDesc: "Wilayah dengan aktivitas keuangan digital dan tingkat literasi kategori sedang, serta rasio kredit bermasalah yang tergolong aman.",
-    characteristics: "Penetrasi peminjam dan merchant berada pada tingkat menengah atau sedang dengan kualitas kredit yang terkendali."
+    title: "Aktivitas Digital Sedang & Terkendali (Moderat)",
+    shortDesc: "dikelompokkan ke dalam <strong>Klaster 3</strong>, yaitu wilayah dengan aktivitas transaksi keuangan digital dan tingkat literasi kategori sedang, serta rasio kredit bermasalah yang tergolong aman.",
+    characteristics: "Pertumbuhan merchant dan peminjam berada pada skala sedang dengan tingkat literasi moderat serta rasio kredit macet (TWP90) yang terkendali."
   },
-  1: {
-    id: 1,
+  3: {
+    id: 3,
     name: "Cluster 4",
     badgeLabel: "Cluster 4",
     badgeClass: "badge-c4",
-    color: "#7b8fa1",
-    title: "Penetrasi Digital Masih Berkembang",
-    shortDesc: "Wilayah dengan penetrasi layanan keuangan digital dan tingkat literasi yang masih dalam tahap berkembang.",
-    characteristics: "Penetrasi akses keuangan formal dan kanal digital masih terbatas, dengan tantangan pada pemerataan infrastruktur dan edukasi dasar."
+    color: "#2563eb",
+    title: "Ekosistem Digital Unggul & Stabil (Bagus)",
+    shortDesc: "dikelompokkan ke dalam <strong>Klaster 4</strong>, yaitu wilayah dengan aktivitas transaksi keuangan digital dan tingkat literasi tinggi, serta rasio kredit bermasalah yang terkendali aman.",
+    characteristics: "Tingkat inklusi, literasi, dan transaksi digital berada pada kategori tinggi dengan rasio kredit macet (TWP90) yang tetap berada di bawah ambang batas aman."
   }
 };
 
@@ -124,7 +124,7 @@ const PROVINCES_DATA = [
     id: "jawa-barat",
     nama: "Jawa Barat",
     cluster: 3,
-    clusterBadge: "Cluster 2",
+    clusterBadge: "Cluster 4",
     clusterDesc: "Wilayah dengan aktivitas transaksi keuangan digital dan tingkat literasi tinggi, serta rasio kredit bermasalah yang terkendali aman.",
     rekeningPer1000: 140.91,
     rekeningKet: "Aktivitas peminjam aktif tergolong tinggi",
@@ -152,7 +152,7 @@ const PROVINCES_DATA = [
     id: "jawa-timur",
     nama: "Jawa Timur",
     cluster: 3,
-    clusterBadge: "Cluster 2",
+    clusterBadge: "Cluster 4",
     clusterDesc: "Wilayah dengan aktivitas transaksi keuangan digital dan tingkat literasi tinggi, serta rasio kredit bermasalah yang terkendali aman.",
     rekeningPer1000: 75.47,
     rekeningKet: "Aktivitas peminjam aktif tergolong moderat",
@@ -180,7 +180,7 @@ const PROVINCES_DATA = [
     id: "jawa-tengah",
     nama: "Jawa Tengah",
     cluster: 3,
-    clusterBadge: "Cluster 2",
+    clusterBadge: "Cluster 4",
     clusterDesc: "Wilayah dengan aktivitas transaksi keuangan digital dan tingkat literasi tinggi, serta rasio kredit bermasalah yang terkendali aman.",
     rekeningPer1000: 71.28,
     rekeningKet: "Aktivitas peminjam aktif tergolong moderat",
@@ -208,7 +208,7 @@ const PROVINCES_DATA = [
     id: "di-yogyakarta",
     nama: "DI Yogyakarta",
     cluster: 3,
-    clusterBadge: "Cluster 2",
+    clusterBadge: "Cluster 4",
     clusterDesc: "Wilayah dengan aktivitas transaksi keuangan digital dan tingkat literasi tinggi, serta rasio kredit bermasalah yang terkendali aman.",
     rekeningPer1000: 106.65,
     rekeningKet: "Aktivitas peminjam aktif tergolong tinggi",
@@ -236,7 +236,7 @@ const PROVINCES_DATA = [
     id: "banten",
     nama: "Banten",
     cluster: 3,
-    clusterBadge: "Cluster 2",
+    clusterBadge: "Cluster 4",
     clusterDesc: "Wilayah dengan aktivitas transaksi keuangan digital dan tingkat literasi tinggi, serta rasio kredit bermasalah yang terkendali aman.",
     rekeningPer1000: 147.04,
     rekeningKet: "Aktivitas peminjam aktif tergolong tinggi",
@@ -264,7 +264,7 @@ const PROVINCES_DATA = [
     id: "bali",
     nama: "Bali",
     cluster: 3,
-    clusterBadge: "Cluster 2",
+    clusterBadge: "Cluster 4",
     clusterDesc: "Wilayah dengan aktivitas transaksi keuangan digital dan tingkat literasi tinggi, serta rasio kredit bermasalah yang terkendali aman.",
     rekeningPer1000: 101.41,
     rekeningKet: "Aktivitas peminjam aktif tergolong tinggi",
@@ -320,7 +320,7 @@ const PROVINCES_DATA = [
     id: "sumatera-barat",
     nama: "Sumatera Barat",
     cluster: 3,
-    clusterBadge: "Cluster 2",
+    clusterBadge: "Cluster 4",
     clusterDesc: "Wilayah dengan aktivitas transaksi keuangan digital dan tingkat literasi tinggi, serta rasio kredit bermasalah yang terkendali aman.",
     rekeningPer1000: 68.99,
     rekeningKet: "Aktivitas peminjam aktif tergolong moderat",
@@ -376,7 +376,7 @@ const PROVINCES_DATA = [
     id: "kalimantan-timur",
     nama: "Kalimantan Timur",
     cluster: 3,
-    clusterBadge: "Cluster 2",
+    clusterBadge: "Cluster 4",
     clusterDesc: "Wilayah dengan aktivitas transaksi keuangan digital dan tingkat literasi tinggi, serta rasio kredit bermasalah yang terkendali aman.",
     rekeningPer1000: 110.30,
     rekeningKet: "Aktivitas peminjam aktif tergolong tinggi",
@@ -404,7 +404,7 @@ const PROVINCES_DATA = [
     id: "sulawesi-selatan",
     nama: "Sulawesi Selatan",
     cluster: 3,
-    clusterBadge: "Cluster 2",
+    clusterBadge: "Cluster 4",
     clusterDesc: "Wilayah dengan aktivitas transaksi keuangan digital dan tingkat literasi tinggi, serta rasio kredit bermasalah yang terkendali aman.",
     rekeningPer1000: 65.40,
     rekeningKet: "Aktivitas peminjam aktif tergolong moderat",
@@ -432,7 +432,7 @@ const PROVINCES_DATA = [
     id: "papua-pegunungan",
     nama: "Papua Pegunungan",
     cluster: 1,
-    clusterBadge: "Cluster 4",
+    clusterBadge: "Cluster 2",
     clusterDesc: "Wilayah dengan penetrasi layanan keuangan digital dan tingkat literasi yang masih dalam tahap berkembang.",
     rekeningPer1000: 1.78,
     rekeningKet: "Aktivitas peminjam aktif masih terbatas",
@@ -460,7 +460,7 @@ const PROVINCES_DATA = [
     id: "maluku-utara",
     nama: "Maluku Utara",
     cluster: 1,
-    clusterBadge: "Cluster 4",
+    clusterBadge: "Cluster 2",
     clusterDesc: "Wilayah dengan penetrasi layanan keuangan digital dan tingkat literasi yang masih dalam tahap berkembang.",
     rekeningPer1000: 43.27,
     rekeningKet: "Aktivitas peminjam aktif tergolong moderat",
@@ -516,7 +516,7 @@ const PROVINCES_DATA = [
     id: "papua-tengah",
     nama: "Papua Tengah",
     cluster: 1,
-    clusterBadge: "Cluster 4",
+    clusterBadge: "Cluster 2",
     clusterDesc: "Wilayah dengan penetrasi layanan keuangan digital dan tingkat literasi yang masih dalam tahap berkembang.",
     rekeningPer1000: 7.41,
     rekeningKet: "Aktivitas peminjam aktif masih terbatas",
@@ -544,7 +544,7 @@ const PROVINCES_DATA = [
     id: "kalimantan-selatan",
     nama: "Kalimantan Selatan",
     cluster: 3,
-    clusterBadge: "Cluster 2",
+    clusterBadge: "Cluster 4",
     clusterDesc: "Wilayah dengan aktivitas transaksi keuangan digital dan tingkat literasi tinggi, serta rasio kredit bermasalah yang terkendali aman.",
     rekeningPer1000: 80.10,
     rekeningKet: "Aktivitas peminjam aktif tergolong tinggi",
@@ -572,7 +572,7 @@ const PROVINCES_DATA = [
     id: "kepulauan-riau",
     nama: "Kepulauan Riau",
     cluster: 3,
-    clusterBadge: "Cluster 2",
+    clusterBadge: "Cluster 4",
     clusterDesc: "Wilayah dengan aktivitas transaksi keuangan digital dan tingkat literasi tinggi, serta rasio kredit bermasalah yang terkendali aman.",
     rekeningPer1000: 148.78,
     rekeningKet: "Aktivitas peminjam aktif tergolong tinggi",
@@ -666,6 +666,487 @@ REMAINING_PROVINCES.forEach(p => {
     rekomendasiBadge: "TIPS"
   });
 });
+
+const ADAPTIVE_CLUSTER_MODULES = {
+  0: {
+    clusterId: 0,
+    clusterLabel: "Klaster 1",
+    clusterBadgeClass: "badge-c1",
+    clusterTitle: "Mitigasi Kredit Macet & Utang Konsumtif",
+    clusterGoal: "Memperbaiki Kekurangan: Mengendalikan Lonjakan Kredit Macet (TWP90 > 5%) & Menghentikan Utang Konsumtif Gali Lubang Tutup Lubang",
+    modules: [
+      {
+        id: "modul-c1-1",
+        title: "Restrukturisasi Utang & Mengatasi Gagal Bayar (TWP90)",
+        category: "Kredit & Restrukturisasi",
+        icon: "shield-alert",
+        badge: "Krusial Klaster 1",
+        readTime: "6 Menit",
+        summary: "Strategi komprehensif menghadapi gagal bayar kredit fintech, pemulihan catatan SLIK OJK/Pusdafil, dan hak-hak nasabah dalam restrukturisasi resmi.",
+        chapters: [
+          {
+            title: "1. Mengenal TWP90 & Konsekuensi Catatan SLIK OJK",
+            content: `
+              <p>Di wilayah Klaster 1 seperti DKI Jakarta, rasio kredit macet (TWP90) berada pada level kritis <strong>11,58%</strong>. Menunggak pinjaman digital di atas 90 hari kalender bukan sekadar masalah telepon penagihan, melainkan berakibat fatal pada riwayat perbankan Anda:</p>
+              <ul>
+                <li><strong>Pelaporan Otomatis:</strong> Penyelenggara LPBBTI berizin OJK wajib melaporkan data keterlambatan ke <strong>Pusdafil</strong> dan <strong>SLIK OJK (Sistem Layanan Informasi Keuangan)</strong>.</li>
+                <li><strong>Penurunan Status Kolektibilitas:</strong> Status Anda akan anjlok menjadi Kolektibilitas 5 (Macet).</li>
+                <li><strong>Pemblokiran Akses Finansial:</strong> Permohonan KPR rumah, Kredit Kendaraan Bermotor (KKB), hingga Kredit Usaha Rakyat (KUR) di masa depan akan otomatis ditolak oleh seluruh perbankan nasional.</li>
+              </ul>
+            `
+          },
+          {
+            title: "2. Langkah Hukum & Hak Restrukturisasi Kredit",
+            content: `
+              <p>Jika Anda mengalami kendala likuiditas nyata, ajukan permohonan restrukturisasi resmi ke platform fintech legal sebelum jatuh tempo 90 hari:</p>
+              <ol>
+                <li><strong>Rescheduling (Perpanjangan Tenor):</strong> Memperpanjang jangka waktu cicilan agar beban bayar bulanan menjadi lebih ringan.</li>
+                <li><strong>Reconditioning (Penyesuaian Bunga):</strong> Mengajukan penghapusan denda akumulatif atau penyesuaian suku bunga pokok.</li>
+                <li><strong>Restructuring (Penataan Kembali Pokok):</strong> Negosiasi pelunasan pokok utang saja (haircut) bagi nasabah yang terdampak musibah pemutusan hubungan kerja.</li>
+              </ol>
+            `
+          },
+          {
+            title: "3. Memutus Lingkaran Gali Lubang Tutup Lubang",
+            content: `
+              <p>Kesalahan fatal peminjam konsumtif adalah mengambil pinjaman di platform B untuk membayar tagihan platform A. Hal ini memperbesar pokok utang secara eksponensial dalam hitungan minggu.</p>
+              <div class="callout callout-danger">
+                <strong>Aturan Tegas:</strong> Hentikan segera pembukaan akun pinjaman baru! Jual aset non-produktif atau cari penghasilan tambahan untuk melunasi pokok pinjaman terkecil terlebih dahulu (Metode Debt Snowball).
+              </div>
+            `
+          }
+        ]
+      },
+      {
+        id: "modul-c1-2",
+        title: "Pengendalian Gaya Hidup Konsumtif & FOMO Perkotaan",
+        category: "Perilaku Finansial",
+        icon: "wallet",
+        badge: "Mitigasi Perilaku",
+        readTime: "5 Menit",
+        summary: "Menjinakkan impuls belanja fitur PayLater, mengaudit pengeluaran gengsi sosial, dan menetapkan batasan gaya hidup realistis.",
+        chapters: [
+          {
+            title: "1. Jebakan Fitur PayLater & Psikologi 'Uang Gaib'",
+            content: `
+              <p>Fitur <em>Buy Now Pay Later (BNPL)</em> menghilangkan rasa bersalah saat berbelanja karena uang tidak langsung berkurang dari rekening. Di kawasan metropolitan, hal ini memicu akumulasi transaksi mikro (kuliner, tiket konser, fashion) yang tiba-tiba membengkak saat tanggal cetak tagihan.</p>
+              <p>Gunakan aturan jeda <strong>24 Jam (24-Hour Rule)</strong>: Masukkan barang ke keranjang belanja, tunggu 24 jam. Jika setelah 24 jam Anda tidak benar-benar membutuhkannya, hapus dari keranjang.</p>
+            `
+          },
+          {
+            title: "2. Mengaudit Biaya Bocor Halus (Phantom Expenses)",
+            content: `
+              <p>Pengeluaran kecil yang sering diabaikan namun merusak arus kas bulanan perkotaan:</p>
+              <ul>
+                <li>Langganan streaming multipel yang jarang ditonton (Rp150.000 - Rp300.000/bulan).</li>
+                <li>Jajan kopi dan makanan pesan-antar harian berbiaya ongkir & service fee tinggi (Rp1.500.000+/bulan).</li>
+                <li>Biaya administrasi transfer antarbank dan top-up e-wallet berulang.</li>
+              </ul>
+            `
+          }
+        ]
+      },
+      {
+        id: "modul-c1-3",
+        title: "Audit Rasio Beban Utang Aman (DSR <= 30%)",
+        category: "Perencanaan Arus Kas",
+        icon: "award",
+        badge: "Kalkulasi Protektif",
+        readTime: "6 Menit",
+        summary: "Mengunci batas cicilan bulanan di bawah ambang 30%, pemangkasan anggaran darurat, dan simulasi arus kas bertahan hidup.",
+        chapters: [
+          {
+            title: "1. Formula Debt Service Ratio (DSR)",
+            content: `
+              <p>Kesehatan finansial mensyaratkan <strong>total seluruh cicilan utang bulanan Anda maksimal adalah 30% dari penghasilan bersih bulanan</strong>.</p>
+              <div class="callout callout-info">
+                <strong>Contoh Perhitungan:</strong><br>
+                Penghasilan Bersih: Rp7.000.000<br>
+                Batas Cicilan Maksimal (30%): <strong>Rp2.100.000 / bulan</strong><br>
+                Jika total cicilan PayLater, Kredivo, dan pinjol Anda sudah mencapai Rp3.500.000 (DSR 50%), Anda berada dalam zona bahaya finansial.
+              </div>
+            `
+          },
+          {
+            title: "2. Strategi Pemulihan Anggaran Darurat",
+            content: `
+              <p>Ketika DSR melampaui batas 30%, terapkan protokol penghematan sementara:</p>
+              <ol>
+                <li>Pangkas alokasi 'Keinginan (Wants)' dari 30% menjadi <strong>10%</strong>.</li>
+                <li>Gunakan seluruh selisih dana penghematan untuk percepatan pelunasan utang berbunga tertinggi (Metode Debt Avalanche).</li>
+              </ol>
+            `
+          }
+        ]
+      },
+      {
+        id: "modul-c1-4",
+        title: "Pembangunan Pos Dana Darurat Likuid Anti-Pinjol",
+        category: "Ketahanan Finansial",
+        icon: "trending-up",
+        badge: "Bantalan Likuiditas",
+        readTime: "5 Menit",
+        summary: "Mencegah ketergantungan pada pinjol darurat dengan membangun cadangan kas likuid 3-6 bulan pengeluaran rutin.",
+        chapters: [
+          {
+            title: "1. Mengapa Pinjol Menjadi 'Dana Darurat Semu'?",
+            content: `
+              <p>Masyarakat sering menggunakan pinjol saat darurat (misal sakit atau kendaraan rusak) karena tidak memiliki tabungan cair. Namun, menyelesaikan darurat dengan utang berbunga hanya menunda musibah menjadi krisis finansial baru.</p>
+            `
+          },
+          {
+            title: "2. Target Besaran & Instrumen Penyimpanan",
+            content: `
+              <p>Target ideal dana darurat: <strong>3 hingga 6 kali biaya hidup bulanan pokok</strong>. Simpan pada instrumen likuid seperti Reksa Dana Pasar Uang (RDPU) atau rekening tabungan tanpa kartu ATM agar tidak mudah ditarik sembarangan.</p>
+            `
+          }
+        ]
+      }
+    ]
+  },
+  1: {
+    clusterId: 1,
+    clusterLabel: "Klaster 2",
+    clusterBadgeClass: "badge-c2",
+    clusterTitle: "Fondasi Akses Finansial & Perlindungan Aset",
+    clusterGoal: "Memperbaiki Kekurangan: Membuka Akses Layanan Perbankan Formal, Meningkatkan Literasi Dasar (17-37%), & Mencegah Penipuan Keuangan",
+    modules: [
+      {
+        id: "modul-c2-1",
+        title: "Akses Perbankan Formal & Pemanfaatan Agen Laku Pandai",
+        category: "Inklusi Dasar",
+        icon: "smartphone",
+        badge: "Krusial Klaster 2",
+        readTime: "5 Menit",
+        summary: "Mengenal rekening tabungan formal tanpa biaya administrasi, cara bertransaksi aman melalui Agen Bank resmi di pelosok daerah.",
+        chapters: [
+          {
+            title: "1. Mengenal Rekening Tabungan Bebas Biaya (TabunganKu & SimPel)",
+            content: `
+              <p>Di wilayah Klaster 2 (kawasan Papua dan Maluku Utara), indeks literasi masih berada di kisaran 17% - 37%. Banyak masyarakat enggan menabung di bank karena khawatir saldo berkurang akibat biaya administrasi bulanan.</p>
+              <p>Regulator OJK telah mewajibkan seluruh bank menyediakan produk <strong>TabunganKu</strong> dan <strong>Simpanan Pelajar (SimPel)</strong>:</p>
+              <ul>
+                <li><strong>Bebas Biaya Administrasi Bulanan:</strong> Saldo Anda tidak akan terpotong biaya admin rekening.</li>
+                <li><strong>Setoran Awal Sangat Ringan:</strong> Mulai dari Rp10.000 hingga Rp20.000 saja.</li>
+                <li><strong>Dijamin LPS:</strong> Tabungan Anda dijamin penuh oleh Lembaga Penjamin Simpanan (LPS) hingga Rp2 Miliar.</li>
+              </ul>
+            `
+          },
+          {
+            title: "2. Bertransaksi Lewat Agen Laku Pandai Resmi",
+            content: `
+              <p>Jika kantor cabang bank jauh dari tempat tinggal Anda, manfaatkan layanan <strong>Agen Laku Pandai (BRILink, BNI Agen46, Mandiri Agen)</strong>:</p>
+              <ul>
+                <li>Pastikan agen memiliki sertifikat resmi dan logo perbankan mitra.</li>
+                <li>Selalu minta struk bukti transaksi cetak setiap kali menyetor atau menarik uang tunai.</li>
+                <li>Jangan pernah menitipkan kartu ATM beserta nomor PIN Anda kepada pihak agen.</li>
+              </ul>
+            `
+          }
+        ]
+      },
+      {
+        id: "modul-c2-2",
+        title: "Waspada Penipuan Finansial, Investasi Bodong & Arisan Bodong",
+        category: "Proteksi Aset",
+        icon: "shield-alert",
+        badge: "Proteksi Warga",
+        readTime: "6 Menit",
+        summary: "Mengenali ciri penipuan berkedok arisan online atau penggandaan uang yang kerap menyasar daerah dengan akses informasi terbatas.",
+        chapters: [
+          {
+            title: "1. Modus Penipuan yang Sering Masuk ke Daerah",
+            content: `
+              <p>Waspadai modus-modus berikut yang terbukti 100% penipuan:</p>
+              <ul>
+                <li><strong>Arisan Online Berbunga Pasti:</strong> Menjanjikan uang berlipat ganda dalam hitungan hari tanpa ada kegiatan usaha riil.</li>
+                <li><strong>Koperasi Bodong / Investasi Emas Fiktif:</strong> Mengklaim memiliki izin pemerintah namun tidak terdaftar di OJK.</li>
+                <li><strong>Syarat Menitipkan Uang untuk Hadiah:</strong> Mengabarkan Anda menang hadiah undian namun harus mentransfer uang muka terlebih dahulu.</li>
+              </ul>
+            `
+          },
+          {
+            title: "2. Prinsip 2L: Legal dan Logis",
+            content: `
+              <p>Sebelum menitipkan uang Anda kepada siapapun, ingat selalu 2 prinsip utama:</p>
+              <div class="callout callout-info">
+                <strong>1. Legal:</strong> Cek apakah perusahaannya berizin resmi di OJK melalui telepon 157 atau WhatsApp 081-157-157-157.<br>
+                <strong>2. Logis:</strong> Apakah keuntungan yang dijanjikan masuk akal? Tidak ada instrumen investasi legal yang bisa memberikan untung pasti tanpa risiko kerugian.
+              </div>
+            `
+          }
+        ]
+      },
+      {
+        id: "modul-c2-3",
+        title: "Pencatatan Keuangan Sederhana Usaha & Pemisahan Kas",
+        category: "Pengelolaan Kas",
+        icon: "wallet",
+        badge: "Literasi Dasar",
+        readTime: "5 Menit",
+        summary: "Pemisahan uang modal usaha dagang/tani dengan belanja rumah tangga harian untuk mencegah kebangkrutan usaha mikro.",
+        chapters: [
+          {
+            title: "1. Bahaya Mencampur Uang Dapur dan Uang Usaha",
+            content: `
+              <p>Sering kali pelaku usaha merasa dagangannya laris, namun modalnya habis dan tidak bisa kulakan kembali. Ini terjadi karena uang hasil penjualan langsung dipakai untuk keperluan dapur keluarga tanpa pencatatan.</p>
+            `
+          },
+          {
+            title: "2. Metode Dua Dompet / Dua Buku",
+            content: `
+              <p>Terapkan aturan sederhana: Siapkan dua dompet atau dua rekening terpisah. Ambil sejumlah uang tetap per minggu sebagai 'gaji' untuk belanja dapur, dan biarkan sisa keuntungan tetap di dompet usaha sebagai modal perputaran.</p>
+            `
+          }
+        ]
+      },
+      {
+        id: "modul-c2-4",
+        title: "Keamanan Simpanan & Pencegahan Penipuan Telepon/SMS",
+        category: "Literasi Digital",
+        icon: "smartphone",
+        badge: "Keamanan Data",
+        readTime: "4 Menit",
+        summary: "Menjaga kerahasiaan buku tabungan, nomor PIN ATM, dan mewaspadai pesan telepon penipuan berhadiah.",
+        chapters: [
+          {
+            title: "1. Menjaga Keamanan PIN & Buku Tabungan",
+            content: `
+              <p>Nomor PIN ATM adalah rahasia pribadi. Jangan gunakan tanggal lahir sebagai PIN, dan jangan pernah menuliskan nomor PIN pada bagian belakang kartu ATM Anda.</p>
+            `
+          },
+          {
+            title: "2. Abaikan Pesan SMS Menang Undian",
+            content: `
+              <p>Bank resmi tidak pernah mengumumkan pemenang undian berhadiah melalui pesan SMS dari nomor ponsel pribadi atau menuntut transfer biaya tebusan hadiah.</p>
+            `
+          }
+        ]
+      }
+    ]
+  },
+  2: {
+    clusterId: 2,
+    clusterLabel: "Klaster 3",
+    clusterBadgeClass: "badge-c3",
+    clusterTitle: "Optimalisasi Usaha Produktif & Ketahanan Kas",
+    clusterGoal: "Meningkatkan Potensi: Akselerasi Pembiayaan Usaha Produktif (KUR & Fintech Legal), Proteksi Transaksi Digital, & Menjaga Kualitas Kredit",
+    modules: [
+      {
+        id: "modul-c3-1",
+        title: "Optimalisasi Pembiayaan Modal Kerja Produktif (KUR & Fintech)",
+        category: "Permodalan Usaha",
+        icon: "trending-up",
+        badge: "Krusial Klaster 3",
+        readTime: "6 Menit",
+        summary: "Membedakan utang konsumtif vs modal kerja produktif berdaya ungkit, alur pengajuan KUR resmi, dan pembiayaan syariah.",
+        chapters: [
+          {
+            title: "1. Membedakan Utang Konsumtif vs Utang Produktif",
+            content: `
+              <p>Di wilayah Klaster 3 (Sumatera Utara, Aceh, NTB, Riau, dsb.), aktivitas perdagangan dan pertanian berkembang pesat dengan kredit macet yang terkendali (TWP90 1,69%). Kunci akselerasi ekonomi wilayah ini adalah memanfaatkan utang produktif:</p>
+              <ul>
+                <li><strong>Utang Konsumtif:</strong> Meminjam untuk membeli barang yang nilainya menyusut (gadget baru, liburan, motor kedua) yang membebani arus kas bulanan.</li>
+                <li><strong>Utang Produktif:</strong> Meminjam untuk menambah barang dagangan, memperluas kios, atau membeli alat produksi yang menghasilkan keuntungan lebih besar dari bunga pinjaman.</li>
+              </ul>
+            `
+          },
+          {
+            title: "2. Memanfaatkan Kredit Usaha Rakyat (KUR) Bersubsidi",
+            content: `
+              <p>Pemerintah memberikan subsidi bunga pinjaman modal kerja melalui program KUR di bank mitra (BRI, BNI, Mandiri, BSI):</p>
+              <ul>
+                <li>Suku bunga sangat rendah (hanya 6% efektif per tahun).</li>
+                <li>Plafon KUR Super Mikro hingga Rp10 Juta dan KUR Mikro hingga Rp100 Juta tanpa agunan pokok tambahan.</li>
+                <li>Syarat utama: Memiliki usaha produktif yang telah berjalan minimal 6 bulan dan tidak sedang memiliki kredit produktif di bank lain.</li>
+              </ul>
+            `
+          }
+        ]
+      },
+      {
+        id: "modul-c3-2",
+        title: "Keamanan Siber Transaksi Digital & Anti-Social Engineering",
+        category: "Keamanan Digital",
+        icon: "shield-alert",
+        badge: "Proteksi Transaksi",
+        readTime: "5 Menit",
+        summary: "Mengenali modus penipuan file APK palsu (surat undangan, tagihan paket), perlindungan kode OTP, dan transaksi QRIS yang aman.",
+        chapters: [
+          {
+            title: "1. Bahaya File APK Penipuan via WhatsApp",
+            content: `
+              <p>Modus kejahatan paling marak saat ini adalah pengiriman file berakhiran <strong>.apk</strong> yang menyamar sebagai 'Undangan Pernikahan Digital', 'Foto Paket Pengiriman', atau 'Surat Tilang Kepolisian'.</p>
+              <div class="callout callout-danger">
+                <strong>Peringatan Keamanan:</strong> Jangan pernah mengklik atau mengunduh file .apk dari nomor tidak dikenal. File tersebut mengandung spyware yang bisa membaca SMS OTP dan menguras rekening m-banking Anda secara otomatis.
+              </div>
+            `
+          },
+          {
+            title: "2. Verifikasi Transaksi QRIS Merchant",
+            content: `
+              <p>Bagi pelaku usaha pedagang yang memajang barcode QRIS:</p>
+              <ul>
+                <li>Periksa stiker QRIS secara berkala untuk memastikan tidak ditimpa oleh stiker QRIS palsu milik orang lain.</li>
+                <li>Selalu tunggu notifikasi transaksi berhasil di aplikasi merchant Anda sebelum menyerahkan barang dagangan kepada pembeli.</li>
+              </ul>
+            `
+          }
+        ]
+      },
+      {
+        id: "modul-c3-3",
+        title: "Manajemen Kas Musiman & Dana Cadangan UMKM",
+        category: "Ketahanan Bisnis",
+        icon: "wallet",
+        badge: "Ketahanan Usaha",
+        readTime: "5 Menit",
+        summary: "Mengantisipasi siklus penurunan omzet musiman (low season), menghitung besaran dana cadangan operasional 3-6 bulan.",
+        chapters: [
+          {
+            title: "1. Mengelola Fluktuasi Arus Kas Musiman",
+            content: `
+              <p>Pada daerah sentra pariwisata atau komoditas pertanian, perputaran uang sering kali mengikuti musim panen atau musim liburan. Saat musim panen/ramai, tahan godaan untuk menghabiskan seluruh keuntungan. Simpan sebagian besar surplus kas ke rekening cadangan untuk menutupi biaya operasional saat musim sepi.</p>
+            `
+          }
+        ]
+      },
+      {
+        id: "modul-c3-4",
+        title: "Diversifikasi Tabungan ke Instrumen Investasi Resmi OJK",
+        category: "Pengembangan Aset",
+        icon: "award",
+        badge: "Pertumbuhan Aset",
+        readTime: "6 Menit",
+        summary: "Melawan inflasi dengan instrumen resmi berisiko terukur: Emas Logam Mulia, Sukuk Ritel, dan Reksa Dana Pasar Uang.",
+        chapters: [
+          {
+            title: "1. Mengapa Tabungan Biasa Tergerus Inflasi?",
+            content: `
+              <p>Bunga tabungan bank berkisar 0,5% per tahun, sementara inflasi tahunan bisa mencapai 3% - 4%. Alokasikan dana tabungan jangka panjang (di atas 1 tahun) ke instrumen pasar modal resmi seperti Reksa Dana Pendapatan Tetap atau Sukuk Negara yang memberikan imbal hasil di atas laju inflasi.</p>
+            `
+          }
+        ]
+      }
+    ]
+  },
+  3: {
+    clusterId: 3,
+    clusterLabel: "Klaster 4",
+    clusterBadgeClass: "badge-c4",
+    clusterTitle: "Optimalisasi Portofolio & Keunggulan Finansial",
+    clusterGoal: "Mempertahankan Keunggulan: Menjaga Reputasi Kredit Kol 1 Sempurna, Skalabilitas Bisnis Merchant QRIS, & Optimalisasi Portofolio Multi-Aset",
+    modules: [
+      {
+        id: "modul-c4-1",
+        title: "Menjaga Rekam Jejak Kredit Kol 1 untuk Fasilitas Produktif",
+        category: "Reputasi Finansial",
+        icon: "award",
+        badge: "Krusial Klaster 4",
+        readTime: "6 Menit",
+        summary: "Mempertahankan rekam jejak kredit bersih sempurna tanpa keterlambatan, memanfaatkan skor kredit prima untuk KPR dan modal usaha.",
+        chapters: [
+          {
+            title: "1. Menjaga Skor Kredit Sempurna di Ekosistem Digital Matang",
+            content: `
+              <p>Di wilayah Klaster 4 (DI Yogyakarta, Jawa Barat, Jawa Timur, Jawa Tengah, Bali, Banten, dsb.), penetrasi transaksi digital dan literasi keuangan sangat tinggi dengan rasio kredit macet yang sangat sehat (TWP90 2,40%).</p>
+              <p>Tantangan utama di wilayah unggul ini bukan ketiadaan akses, melainkan <strong>mempertahankan integritas riwayat kredit</strong>:</p>
+              <ul>
+                <li><strong>Kolektibilitas 1 (Lancar):</strong> Riwayat pembayaran selalu tepat waktu sebelum jatuh tempo. Ini adalah modal terpenting untuk mendapatkan suku bunga pinjaman termurah dari perbankan.</li>
+                <li><strong>Hindari Tunggakan Sepele:</strong> Keterlambatan pembayaran PayLater nominal kecil (Rp50.000) tetap akan tercatat di SLIK OJK dan bisa menggagalkan persetujuan KPR ratusan juta rupiah.</li>
+              </ul>
+            `
+          },
+          {
+            title: "2. Memanfaatkan Skor Kredit untuk Aset Apresiatif",
+            content: `
+              <p>Gunakan reputasi kredit yang prima untuk mengambil pinjaman jangka panjang produktif: pembelian rumah pertama (KPR) atau perluasan aset ruko usaha yang nilainya terus meningkat di masa depan.</p>
+            `
+          }
+        ]
+      },
+      {
+        id: "modul-c4-2",
+        title: "Strategi Alokasi Portofolio Investasi Multi-Aset",
+        category: "Manajemen Kekayaan",
+        icon: "trending-up",
+        badge: "Akselerasi Aset",
+        readTime: "7 Menit",
+        summary: "Diversifikasi portofolio modern: Pasar Uang, Obligasi/SBN Ritel, Saham Indeks, perhitungan dana pensiun, dan rebalancing berkala.",
+        chapters: [
+          {
+            title: "1. Teori Portofolio Modern & Diversifikasi Multi-Aset",
+            content: `
+              <p>Jangan menaruh seluruh telur dalam satu keranjang. Alokasikan aset berdasarkan profil risiko dan horison waktu:</p>
+              <ul>
+                <li><strong>Jangka Pendek (&lt; 1 Tahun):</strong> Reksa Dana Pasar Uang & Deposito (Likuid dan stabil).</li>
+                <li><strong>Jangka Menengah (1 - 5 Tahun):</strong> SBN Ritel (ORI, SR, Sukuk) & Reksa Dana Pendapatan Tetap (Imbal hasil stabil bulanan).</li>
+                <li><strong>Jangka Panjang (&gt; 5 Tahun):</strong> Reksa Dana Saham Indeks & Saham Bluechip (Pertumbuhan modal jangka panjang mengalahkan inflasi).</li>
+              </ul>
+            `
+          },
+          {
+            title: "2. Prinsip Rebalancing Berkala",
+            content: `
+              <p>Lakukan evaluasi portofolio setiap 6 atau 12 bulan sekali. Jika porsi saham melonjak melebihi alokasi target profil risiko Anda, lakukan rebalancing dengan mengalihkan sebagian keuntungan ke instrumen berpendapatan tetap.</p>
+            `
+          }
+        ]
+      },
+      {
+        id: "modul-c4-3",
+        title: "Formula Budgeting 50/30/20 & Sistem Tabungan Autopilot",
+        category: "Perencanaan Arus Kas",
+        icon: "wallet",
+        badge: "Disiplin Finansial",
+        readTime: "5 Menit",
+        summary: "Mengunci pos tabungan otomatis di hari gajian, kalkulasi dana darurat 6-12 bulan, dan eliminasi pengeluaran bocor halus.",
+        chapters: [
+          {
+            title: "1. Menjalankan Anggaran Formula 50 / 30 / 20",
+            content: `
+              <p>Bagi penghasilan bersih bulanan Anda secara disiplin:</p>
+              <ul>
+                <li><strong>50% Kebutuhan Pokok (Needs):</strong> Cicilan rumah/sewa, kebutuhan dapur, listrik, transportasi harian.</li>
+                <li><strong>30% Keinginan (Wants):</strong> Hiburan, kuliner kafe, rekreasi keluarga.</li>
+                <li><strong>20% Tabungan & Investasi (Savings):</strong> Dana darurat dan investasi masa depan.</li>
+              </ul>
+            `
+          },
+          {
+            title: "2. Sistem Tabungan Otomatis (Autopilot)",
+            content: `
+              <p>Aktifkan fitur <strong>Auto-Debet di Hari Gajian (Pay Yourself First)</strong>. Begitu gaji masuk ke rekening operasional, sistem otomatis mentransfer 20% ke rekening investasi sebelum Anda sempat menggunakannya untuk konsumsi.</p>
+            `
+          }
+        ]
+      },
+      {
+        id: "modul-c4-4",
+        title: "Skalabilitas Ekosistem Merchant QRIS & Tata Kelola Usaha",
+        category: "Ekosistem Digital",
+        icon: "smartphone",
+        badge: "Ekosistem Bisnis",
+        readTime: "6 Menit",
+        summary: "Pemanfaatan sistem kasir digital QRIS dinamis, pembentukan mutasi rekening usaha bankable, dan kepatuhan pajak UMKM.",
+        chapters: [
+          {
+            title: "1. Memaksimalkan Penetrasi Merchant QRIS",
+            content: `
+              <p>Di wilayah Klaster 4 seperti DI Yogyakarta dan Jawa Barat, densitas merchant QRIS mencapai lebih dari 200 merchant per 1.000 penduduk. Gunakan QRIS dinamis untuk mempermudah pencatatan pembukuan otomatis, mencegah risiko uang palsu, dan mempercepat rekonsiliasi kasir harian.</p>
+            `
+          },
+          {
+            title: "2. Membangun Rekening Usaha yang Bankable",
+            content: `
+              <p>Bank dan lembaga pembiayaan menilai kesehatan bisnis Anda dari perputaran uang di rekening usaha. Pisahkan rekening pribadi dengan rekening merchant agar histori mutasi kas dapat digunakan sebagai agunan arus kas saat mengajukan plafon kredit ekspansi usaha.</p>
+            `
+          }
+        ]
+      }
+    ]
+  }
+};
 
 const FINANCIAL_MODULES = [
   {

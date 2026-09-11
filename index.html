@@ -61,10 +61,10 @@
 
           <!-- Map Legend -->
           <div class="map-legend-row">
-            <div class="legend-item"><span class="legend-dot dot-bagus"></span>Bagus</div>
-            <div class="legend-item"><span class="legend-dot dot-moderat"></span>Moderat</div>
             <div class="legend-item"><span class="legend-dot dot-kredit-macet"></span>Kredit Macet</div>
             <div class="legend-item"><span class="legend-dot dot-tertinggal"></span>Tertinggal</div>
+            <div class="legend-item"><span class="legend-dot dot-moderat"></span>Moderat</div>
+            <div class="legend-item"><span class="legend-dot dot-bagus"></span>Bagus</div>
           </div>
 
           <!-- 2 National Indices Cards (Side by Side) -->
@@ -212,10 +212,25 @@
            ==================================================================== -->
       <section class="screen" id="modules-screen">
         <header class="app-header-navy">
+          <button class="header-back-btn" id="btn-back-from-modules" aria-label="Kembali ke Profil Daerah" style="display: none;">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#ffec85" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="15 18 9 12 15 6"></polyline>
+            </svg>
+          </button>
           <h1 class="header-center-title">FIN-formation</h1>
         </header>
 
         <div class="modules-scroll-container">
+          <!-- Adaptive Cluster Focus Banner -->
+          <div class="adaptive-module-banner" id="adaptive-module-banner">
+            <div class="adaptive-banner-top">
+              <span class="adaptive-cluster-badge badge-c4" id="adaptive-cluster-badge">Klaster 4</span>
+              <span class="adaptive-source-text" id="adaptive-source-text">Profil Rujukan: DI Yogyakarta</span>
+            </div>
+            <h3 class="adaptive-cluster-title" id="adaptive-cluster-title">Optimalisasi Investasi & Akselerasi Ekosistem Digital</h3>
+            <p class="adaptive-cluster-goal" id="adaptive-cluster-goal">Mempertahankan Keunggulan: Mempertahankan TWP90 Terkendali Sehat & Akselerasi Skalabilitas Merchant QRIS.</p>
+          </div>
+
           <h3 class="section-clean-title">Perangkat Interaktif Finansial</h3>
 
           <!-- 3 Interactive Tools -->
@@ -249,7 +264,7 @@
             </div>
           </div>
 
-          <h3 class="section-clean-title">5 Modul Pembelajaran Terstruktur</h3>
+          <h3 class="section-clean-title" id="modules-curriculum-heading">Modul Pembelajaran Terarah</h3>
           <div class="modules-curriculum-list" id="curriculum-module-list">
             <!-- Dynamically populated by app.js -->
           </div>
@@ -294,7 +309,7 @@
           <div class="profile-province-card" id="profile-btn-view-diy" role="button" tabindex="0" title="Buka Profil Keuangan DI Yogyakarta">
             <div class="profile-province-text">
               <div class="profile-province-label">Profil Keuangan Daerahmu</div>
-              <div class="profile-province-title">DI Yogyakarta &bull; Cluster 2</div>
+              <div class="profile-province-title">DI Yogyakarta &bull; Cluster 4</div>
               <div class="profile-province-desc">Inklusi 98,74% &bull; Literasi 76,44% &bull; TWP90 2,85% (Sehat)</div>
             </div>
             <button class="profile-btn-open-diy" aria-label="Buka Data Keuangan DI Yogyakarta">
@@ -388,9 +403,9 @@
         <div class="search-filter-pills">
           <button class="filter-pill active" data-filter="all">Semua (38)</button>
           <button class="filter-pill" data-filter="0">Cluster 1 (1)</button>
-          <button class="filter-pill" data-filter="3">Cluster 2 (18)</button>
+          <button class="filter-pill" data-filter="1">Cluster 2 (4)</button>
           <button class="filter-pill" data-filter="2">Cluster 3 (15)</button>
-          <button class="filter-pill" data-filter="1">Cluster 4 (4)</button>
+          <button class="filter-pill" data-filter="3">Cluster 4 (18)</button>
         </div>
 
         <div class="province-items-grid" id="province-list-items">

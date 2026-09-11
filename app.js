@@ -12,6 +12,9 @@ document.addEventListener('DOMContentLoaded', () => {
     currentScreen: 'login-screen',
     selectedProvinceId: 'dki-jakarta',
     selectedProvinceIndex: 0,
+    moduleSource: 'nav', // 'detail' or 'nav'
+    activeModuleCluster: 3, // default DI Yogyakarta (Klaster 4)
+    activeModuleProvinceName: 'DI Yogyakarta',
     searchFilter: 'all',
     searchQuery: '',
     quiz: {
@@ -64,6 +67,7 @@ document.addEventListener('DOMContentLoaded', () => {
       targetScreen.classList.add('active');
       state.currentScreen = targetScreenId;
       targetScreen.scrollTop = 0;
+      window.scrollTo(0, 0);
     }
 
     // Toggle bottom nav visibility
@@ -162,6 +166,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const btnBackToHome = document.getElementById('btn-back-to-home');
   const btnGantiDaerah = document.getElementById('btn-ganti-daerah');
   const btnToModulesFromDetail = document.getElementById('btn-to-modules-from-detail');
+  const btnBackFromModules = document.getElementById('btn-back-from-modules');
 
   if (btnBackToHome) {
     btnBackToHome.addEventListener('click', () => {
@@ -177,7 +182,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
   if (btnToModulesFromDetail) {
     btnToModulesFromDetail.addEventListener('click', () => {
+      const p = PROVINCES_DATA[state.selectedProvinceIndex] || PROVINCES_DATA[0];
+      state.moduleSource = 'detail';
+      state.activeModuleCluster = p.cluster;
+      state.activeModuleProvinceName = p.nama;
+      if (btnBackFromModules) btnBackFromModules.style.display = 'flex';
+      renderModulesScreen();
       switchScreen('modules-screen');
+    });
+  }
+
+  if (btnBackFromModules) {
+    btnBackFromModules.addEventListener('click', () => {
+      switchScreen('province-screen');
     });
   }
 
@@ -223,19 +240,15 @@ document.addEventListener('DOMContentLoaded', () => {
     // Cluster Status Pill
     if (clusterPill) {
       clusterPill.textContent = p.clusterBadge || `Cluster ${p.cluster + 1}`;
-      clusterPill.className = 'detail-cluster-pill';
-      if (p.cluster === 0) clusterPill.classList.add('badge-c1');
-      else if (p.cluster === 3) clusterPill.classList.add('badge-c2');
-      else if (p.cluster === 2) clusterPill.classList.add('badge-c3');
-      else clusterPill.classList.add('badge-c4');
+      clusterPill.className = `detail-cluster-pill badge-c${p.cluster + 1}`;
     }
 
     // Standardized Cluster Explanations
     const clusterStandardDescs = {
       0: 'dikelompokkan ke dalam <strong>Klaster 1</strong>, yaitu wilayah dengan aktivitas transaksi keuangan digital dan tingkat literasi tinggi, namun memiliki risiko kredit bermasalah (TWP90) yang tinggi di atas ambang batas aman.',
-      3: 'dikelompokkan ke dalam <strong>Klaster 2</strong>, yaitu wilayah dengan aktivitas transaksi keuangan digital dan tingkat literasi tinggi, serta rasio kredit bermasalah yang terkendali aman.',
+      1: 'dikelompokkan ke dalam <strong>Klaster 2</strong>, yaitu wilayah dengan penetrasi layanan keuangan digital dan tingkat literasi yang masih dalam tahap berkembang.',
       2: 'dikelompokkan ke dalam <strong>Klaster 3</strong>, yaitu wilayah dengan aktivitas transaksi keuangan digital dan tingkat literasi kategori sedang, serta rasio kredit bermasalah yang tergolong aman.',
-      1: 'dikelompokkan ke dalam <strong>Klaster 4</strong>, yaitu wilayah dengan penetrasi layanan keuangan digital dan tingkat literasi yang masih dalam tahap berkembang.'
+      3: 'dikelompokkan ke dalam <strong>Klaster 4</strong>, yaitu wilayah dengan aktivitas transaksi keuangan digital dan tingkat literasi tinggi, serta rasio kredit bermasalah yang terkendali aman.'
     };
 
     // Helper for interpreting metric values meaningfully (matching FINformation - Detail Page.png)
@@ -319,7 +332,17 @@ document.addEventListener('DOMContentLoaded', () => {
   navTabs.forEach(tab => {
     tab.addEventListener('click', () => {
       const targetId = tab.getAttribute('data-target');
-      if (targetId) switchScreen(targetId);
+      if (targetId) {
+        if (targetId === 'modules-screen') {
+          // Nav bar direct access: default to DI Yogyakarta (Klaster 4) & hide Back button
+          state.moduleSource = 'nav';
+          state.activeModuleCluster = 3;
+          state.activeModuleProvinceName = 'DI Yogyakarta';
+          if (btnBackFromModules) btnBackFromModules.style.display = 'none';
+          renderModulesScreen();
+        }
+        switchScreen(targetId);
+      }
     });
   });
 
@@ -340,7 +363,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const provinceListContainer = document.getElementById('province-list-items');
 
   function updateFilterPillCounts() {
-    const counts = { all: PROVINCES_DATA.length, 0: 0, 3: 0, 2: 0, 1: 0 };
+    const counts = { all: PROVINCES_DATA.length, 0: 0, 1: 0, 2: 0, 3: 0 };
     PROVINCES_DATA.forEach(p => {
       if (counts[p.cluster] !== undefined) {
         counts[p.cluster]++;
@@ -351,9 +374,9 @@ document.addEventListener('DOMContentLoaded', () => {
       const f = pill.getAttribute('data-filter');
       if (f === 'all') pill.textContent = `Semua (${counts.all})`;
       else if (f === '0') pill.textContent = `Cluster 1 (${counts[0]})`;
-      else if (f === '3') pill.textContent = `Cluster 2 (${counts[3]})`;
+      else if (f === '1') pill.textContent = `Cluster 2 (${counts[1]})`;
       else if (f === '2') pill.textContent = `Cluster 3 (${counts[2]})`;
-      else if (f === '1') pill.textContent = `Cluster 4 (${counts[1]})`;
+      else if (f === '3') pill.textContent = `Cluster 4 (${counts[3]})`;
     });
   }
 
@@ -428,11 +451,11 @@ document.addEventListener('DOMContentLoaded', () => {
       const item = document.createElement('div');
       item.className = 'prov-list-card';
 
-      let badgeBg = '#be3618';
-      let clusterName = 'Cluster 1';
-      if (p.cluster === 3) { badgeBg = '#2563eb'; clusterName = 'Cluster 2'; }
-      else if (p.cluster === 2) { badgeBg = '#f09228'; clusterName = 'Cluster 3'; }
-      else if (p.cluster === 1) { badgeBg = '#7b8fa1'; clusterName = 'Cluster 4'; }
+      const cInfo = (typeof CLUSTERS_CONFIG !== 'undefined' && CLUSTERS_CONFIG[p.cluster]) 
+        ? CLUSTERS_CONFIG[p.cluster] 
+        : { color: '#2563eb', badgeLabel: `Cluster ${p.cluster + 1}` };
+      const badgeBg = cInfo.color;
+      const clusterName = cInfo.badgeLabel;
 
       item.innerHTML = `
         <div class="prov-card-left">
@@ -467,17 +490,46 @@ document.addEventListener('DOMContentLoaded', () => {
   const mythsContainer = document.getElementById('myths-cards-container');
 
   function renderModulesScreen() {
-    // Render Curriculum
-    if (curriculumListContainer && typeof MODULES_CURRICULUM !== 'undefined') {
+    const clusterId = state.activeModuleCluster !== undefined ? state.activeModuleCluster : 3;
+    const clusterConfig = (typeof ADAPTIVE_CLUSTER_MODULES !== 'undefined' && ADAPTIVE_CLUSTER_MODULES[clusterId])
+      ? ADAPTIVE_CLUSTER_MODULES[clusterId]
+      : null;
+
+    // Update Adaptive Module Banner
+    const bannerBadge = document.getElementById('adaptive-cluster-badge');
+    const bannerSource = document.getElementById('adaptive-source-text');
+    const bannerTitle = document.getElementById('adaptive-cluster-title');
+    const bannerGoal = document.getElementById('adaptive-cluster-goal');
+
+    if (clusterConfig) {
+      if (bannerBadge) {
+        bannerBadge.textContent = clusterConfig.clusterLabel;
+        bannerBadge.className = `adaptive-cluster-badge ${clusterConfig.clusterBadgeClass}`;
+      }
+      if (bannerSource) {
+        if (state.moduleSource === 'detail' && state.activeModuleProvinceName) {
+          bannerSource.textContent = `Profil Rujukan: ${state.activeModuleProvinceName}`;
+        } else {
+          bannerSource.textContent = 'Rekomendasi Utama: DI Yogyakarta';
+        }
+      }
+      if (bannerTitle) bannerTitle.textContent = clusterConfig.clusterTitle;
+      if (bannerGoal) bannerGoal.textContent = clusterConfig.clusterGoal;
+    }
+
+    // Render Curriculum Modules
+    if (curriculumListContainer) {
       curriculumListContainer.innerHTML = '';
-      MODULES_CURRICULUM.forEach((mod, idx) => {
+      const modulesList = clusterConfig ? clusterConfig.modules : (typeof FINANCIAL_MODULES !== 'undefined' ? FINANCIAL_MODULES : []);
+      
+      modulesList.forEach((mod, idx) => {
         const card = document.createElement('div');
         card.className = 'module-item-card';
         card.innerHTML = `
           <div class="module-item-info">
             <div class="module-item-tag">Modul ${idx + 1} &bull; ${mod.category}</div>
             <div class="module-item-title">${mod.title}</div>
-            <div class="module-item-time">Waktu Baca: ${mod.readTime}</div>
+            ${mod.badge ? `<div class="module-item-time">${mod.badge}</div>` : ''}
           </div>
           <div class="module-item-arrow">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
@@ -513,18 +565,19 @@ document.addEventListener('DOMContentLoaded', () => {
   function openModuleReader(moduleData) {
     if (readerModal && readerTitle && readerBody) {
       readerTitle.textContent = moduleData.title;
-      let html = `<p style="margin-bottom: 12px; font-weight: 600; color: #0d1e44;">${moduleData.summary}</p>`;
+      let html = `<div class="reader-summary-box">${moduleData.summary}</div>`;
       if (moduleData.chapters) {
         moduleData.chapters.forEach(chap => {
           html += `
-            <div style="margin-bottom: 14px; background: #ffffff; padding: 12px; border-radius: 10px; border: 1px solid #cbd5e1;">
-              <h4 style="color: #0d1e44; font-size: 13px; font-weight: 700; margin-bottom: 6px;">${chap.title}</h4>
-              <div>${chap.content}</div>
+            <div class="reader-chapter-card">
+              <h4 class="reader-chapter-title">${chap.title}</h4>
+              <div class="reader-chapter-body">${chap.content}</div>
             </div>
           `;
         });
       }
       readerBody.innerHTML = html;
+      readerBody.scrollTop = 0;
       readerModal.classList.add('active');
     }
   }

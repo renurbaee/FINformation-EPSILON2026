@@ -42,10 +42,10 @@
   --color-legend-macet: #df3522;
   --color-legend-tertinggal: #7b8fa1;
 
-  --color-cluster-1: #be3618;
-  --color-cluster-2: #2563eb;
-  --color-cluster-3: #f09228;
-  --color-cluster-4: #7b8fa1;
+  --color-cluster-1: #df3522; /* Klaster 1: Kredit Macet (DKI Jakarta) */
+  --color-cluster-2: #7b8fa1; /* Klaster 2: Tertinggal */
+  --color-cluster-3: #f09228; /* Klaster 3: Moderat */
+  --color-cluster-4: #2563eb; /* Klaster 4: Bagus */
 
   /* Layout */
   --app-max-width: 440px;
@@ -588,10 +588,10 @@ button, input, select, textarea {
   transition: background-color 0.2s ease;
 }
 
-.detail-cluster-pill.badge-c1 { background-color: var(--color-cluster-1); }
-.detail-cluster-pill.badge-c2 { background-color: var(--color-cluster-2); }
-.detail-cluster-pill.badge-c3 { background-color: var(--color-cluster-3); }
-.detail-cluster-pill.badge-c4 { background-color: var(--color-cluster-4); }
+.badge-c1, .detail-cluster-pill.badge-c1 { background-color: var(--color-cluster-1) !important; }
+.badge-c2, .detail-cluster-pill.badge-c2 { background-color: var(--color-cluster-2) !important; }
+.badge-c3, .detail-cluster-pill.badge-c3 { background-color: var(--color-cluster-3) !important; }
+.badge-c4, .detail-cluster-pill.badge-c4 { background-color: var(--color-cluster-4) !important; }
 
 .detail-cluster-desc {
   color: #2b1b17;
@@ -836,6 +836,60 @@ button, input, select, textarea {
   width: 100%;
   max-width: 480px;
   margin: 0 auto;
+}
+
+/* Adaptive Learning Module Focus Banner */
+.adaptive-module-banner {
+  background: linear-gradient(135deg, #ffffff 0%, var(--color-card-yellow) 100%);
+  border: 1.5px solid var(--color-navy-border);
+  border-radius: 16px;
+  padding: 16px 18px;
+  box-shadow: 0 4px 12px rgba(13, 30, 68, 0.08);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.adaptive-banner-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.adaptive-cluster-badge {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 800;
+  padding: 4px 12px;
+  border-radius: 9999px;
+  color: #ffffff;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.12);
+}
+
+.adaptive-source-text {
+  font-size: 11.5px;
+  font-weight: 700;
+  color: var(--color-text-secondary);
+}
+
+.adaptive-cluster-title {
+  font-size: 15.5px;
+  font-weight: 800;
+  color: var(--color-navy-text);
+  line-height: 1.35;
+  margin: 0;
+}
+
+.adaptive-cluster-goal {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--color-text-secondary);
+  line-height: 1.5;
+  margin: 0;
 }
 
 .section-clean-title {
@@ -1346,6 +1400,142 @@ button, input, select, textarea {
   padding: 16px;
   overflow-y: auto;
   flex: 1;
+}
+
+/* ==========================================================================
+   MODULE READER MODAL CONTENT STYLES
+   ========================================================================== */
+.reader-summary-box {
+  margin-bottom: 16px;
+  background: #f8fafc;
+  border-left: 4px solid var(--color-header-navy);
+  border-top: 1px solid #e2e8f0;
+  border-right: 1px solid #e2e8f0;
+  border-bottom: 1px solid #e2e8f0;
+  padding: 12px 16px;
+  border-radius: 10px;
+  font-weight: 600;
+  color: var(--color-navy-text);
+  font-size: 12.5px;
+  line-height: 1.5;
+}
+
+.reader-chapter-card {
+  margin-bottom: 16px;
+  background: #ffffff;
+  padding: 16px 18px;
+  border-radius: 14px;
+  border: 1.5px solid #cbd5e1;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+}
+
+.reader-chapter-title {
+  color: var(--color-navy-text);
+  font-size: 13.5px;
+  font-weight: 800;
+  margin-bottom: 10px;
+  line-height: 1.35;
+}
+
+.reader-chapter-body {
+  color: #334155;
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+.reader-chapter-body p {
+  margin-bottom: 10px;
+  line-height: 1.6;
+}
+
+.reader-chapter-body p:last-child {
+  margin-bottom: 0;
+}
+
+/* Bullet Lists in Reader - strictly padded and aligned inside cards */
+.reader-chapter-body ul,
+#reader-module-body ul {
+  margin: 10px 0 12px 0;
+  padding-left: 24px !important;
+  list-style-type: disc !important;
+  list-style-position: outside !important;
+}
+
+/* Numbered Lists in Reader - strictly padded and aligned inside cards */
+.reader-chapter-body ol,
+#reader-module-body ol {
+  margin: 10px 0 12px 0;
+  padding-left: 26px !important;
+  list-style-type: decimal !important;
+  list-style-position: outside !important;
+}
+
+.reader-chapter-body li,
+#reader-module-body li {
+  margin-bottom: 8px;
+  line-height: 1.55;
+  padding-left: 4px;
+}
+
+.reader-chapter-body li:last-child,
+#reader-module-body li:last-child {
+  margin-bottom: 0;
+}
+
+.reader-chapter-body li strong,
+#reader-module-body li strong {
+  color: var(--color-navy-text);
+  font-weight: 700;
+}
+
+/* Callouts in Reader */
+.reader-chapter-body .callout,
+#reader-module-body .callout {
+  margin: 12px 0;
+  padding: 12px 14px;
+  border-radius: 10px;
+  font-size: 11.5px;
+  line-height: 1.5;
+}
+
+.reader-chapter-body .callout-danger,
+#reader-module-body .callout-danger {
+  background: #fff1f2;
+  border-left: 4px solid #e11d48;
+  border-top: 1px solid #ffe4e6;
+  border-right: 1px solid #ffe4e6;
+  border-bottom: 1px solid #ffe4e6;
+  color: #9f1239;
+}
+
+.reader-chapter-body .callout-info,
+#reader-module-body .callout-info {
+  background: #f0f9ff;
+  border-left: 4px solid #0284c7;
+  border-top: 1px solid #e0f2fe;
+  border-right: 1px solid #e0f2fe;
+  border-bottom: 1px solid #e0f2fe;
+  color: #0369a1;
+}
+
+.reader-chapter-body .callout-success,
+#reader-module-body .callout-success {
+  background: #f0fdf4;
+  border-left: 4px solid #16a34a;
+  border-top: 1px solid #dcfce7;
+  border-right: 1px solid #dcfce7;
+  border-bottom: 1px solid #dcfce7;
+  color: #166534;
+}
+
+.reader-chapter-body code,
+#reader-module-body code {
+  background: #f1f5f9;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-family: monospace;
+  font-size: 11px;
+  color: #0d1e44;
 }
 
 /* Search Input Box */
